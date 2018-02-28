@@ -7,15 +7,18 @@ ob_start();?>
 			 <div class="col-md-8 content-main">
 				 <div class="content-grid">					 
 					 
+					 <?php foreach($posts AS $post) :
+					 $comCount = $comMng->comCount($post['id']);
+					 ?>
 					 <div class="content-grid-info">
-						 <img src="Content/Images/post1.jpg" alt=""/>
+						 <img src="Content/Images/<?= $post['image']?> " alt=""/>
 						 <div class="post-info">
-						 <h4><a href="single.html">Lorem ipsum dolor sit amet</a>  July 30, 2014 / 27 Comments</h4>
+						 <h4><a href="?action=post&id=<?=$post['id'] . '">' . $post['title'] . '</a>' . $post['datefr'] . ' / ' . $comCount['comCount'] .' Commentaires</h4>'?>
 						 <p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis.</p>
-						 <a href="single.html"><span></span>READ MORE</a>
+						 <a href="?action=post&id=<?=$post['id']?>"><span></span>VOIR PLUS</a>
 						 </div>
 					 </div>
-					 
+					 <?php endforeach; ?>
 					 
 				 </div>
 			  </div>
