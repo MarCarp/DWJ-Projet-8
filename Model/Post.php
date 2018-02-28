@@ -1,4 +1,5 @@
 <?php
+require 'Model/Model.php';
 class Post extends Model
 {
 	public function getPosts()
