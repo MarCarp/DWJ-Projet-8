@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title><?= title ?></title>
+	<title><?= $title ?></title>
 	<link href="Content/Css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link href="Content/Css/style.css" rel='stylesheet' type='text/css' />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
