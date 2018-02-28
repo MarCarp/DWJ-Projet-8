@@ -3,15 +3,15 @@ abstract class Model
 {
 	private $_db;
 
-	public function request($sql, $params=null)
+	protected function request($sql, $params=null)
 	{
 		if($params==null)
 		{
-			$q = $this->_db->query($sql);
+			$q = $this->getDb()->query($sql);
 		}
 		else
 		{
-			$q = $this->_db->prepare($sql);
+			$q = $this->getDb()->prepare($sql);
 			$q->execute($params);
 		}
 		return $q;
@@ -21,7 +21,7 @@ abstract class Model
 	{
 		if($this->_db == null)
 		{
-			$this->$_db = new PDO('mysql:host=localhost;dbname=projet_8;charset=utf8','root','');
+			$this->_db = new PDO('mysql:host=localhost;dbname=projet_8;charset=utf8','root','');
 		}
 		return $this->_db;
 	}
