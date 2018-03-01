@@ -8,7 +8,7 @@ class Post extends Model
 		$posts = $this->request($sql);
 		return $posts;
 	}
-
+	
 	public function getPost($postId)
 	{
 		$sql = 'SELECT POST_TITLE title, POST_CONTENT content, DATE_FORMAT(POST_DATE, "%b %e, %Y/") datefr FROM blg_posts WHERE POST_ID=?';
