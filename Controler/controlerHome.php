@@ -21,7 +21,11 @@ if(isset($_GET['action']))
 	}
 	elseif($_GET['action']=='post')
 	{
-		
+		$postId = $_GET['id'];
+		$post = $postMng->getPost($postId);
+		$coms = $comMng->getComments($postId);
+		require 'Vue/vueSide.php';
+		require 'Vue/vuePost.php';
 	}
 }
 else
