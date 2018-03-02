@@ -1,6 +1,19 @@
 <?php
 
-require 'Controler/routeur.php';
+require 'Controler/Routeur.php';
 
-$routeur = new Routeur();
-$routeRequest($_GET['action']);
+try
+{
+	$routeur = new Routeur();
+	if(isset($_GET['action']))
+	{
+		$action = $_GET['action'];
+		$routeur->RouteRequest($action);
+	}
+	else
+		{$routeur->RouteRequest();}
+}
+catch (Exception $e)
+{
+	echo $e->getMessage();
+}

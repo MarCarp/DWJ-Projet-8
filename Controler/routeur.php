@@ -5,7 +5,7 @@ class Routeur
 	public function RouteRequest($action=null)
 	{
 		require 'Vue/vueSide.php';
-		if(isset($action))
+		if($action!=null)
 		{
 			if($action=='about')
 			{
@@ -19,7 +19,7 @@ class Routeur
 			}
 			elseif($_GET['action']=='post')
 			{
-				
+			require 'Controler/controlerPost.php';
 			}
 		}
 		else

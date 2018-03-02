@@ -12,7 +12,7 @@ class Post extends Model
 	public function getPost($postId)
 	{
 		$sql = 'SELECT POST_TITLE title, POST_CONTENT content, POST_IMG image, DATE_FORMAT(POST_DATE, "%b %e, %Y/") datefr FROM blg_posts WHERE POST_ID=?';
-		$post = $this->request($sql,array($postId));
-		return $post;		
+		$post = $this->request($sql, array($postId));
+		return $post->fetch();		
 	}
 }
