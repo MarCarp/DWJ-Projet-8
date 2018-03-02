@@ -12,7 +12,7 @@ class Comment extends Model
 
 	public function lastComments()
 	{
-		$sql = 'SELECT COM_AUTHOR author, COM_CONTENT content FROM blg_comments ORDER BY COM_DATE DESC';
+		$sql = 'SELECT bc.COM_AUTHOR author, bp.POST_TITLE title FROM blg_comments bc, blg_posts bp WHERE bp.POST_ID = bc.POST_ID ORDER BY COM_DATE DESC';
 		$coms = $this->request($sql);
 		return $coms;			
 	}
