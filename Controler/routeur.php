@@ -4,7 +4,7 @@ class Routeur
 {
 	public function RouteRequest($action=null)
 	{
-		require 'Vue/vueSide.php';
+		require 'Controler/controlerSide.php';
 		if($action!=null)
 		{
 			if($action=='about')

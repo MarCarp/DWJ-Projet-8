@@ -5,10 +5,9 @@ ob_start();?>
 				 <div class="recent">
 					 <h3>DERNIERS BILLETS</h3>
 					 <ul>
-					 <li><a href="#">Aliquam tincidunt mauris</a></li>
-					 <li><a href="#">Vestibulum auctor dapibus  lipsum</a></li>
-					 <li><a href="#">Nunc dignissim risus consecu</a></li>
-					 <li><a href="#">Cras ornare tristiqu</a></li>
+						<?php foreach($topPosts AS $topPost) : ?>
+							<li><a href="?action=post&id=<?= $topPost['id'] . '">' . $topPost['title'] . '</a></li>'?>
+						<?php endforeach; ?>
 					 </ul>
 				 </div>
 				 <div class="comments">
@@ -29,6 +28,7 @@ ob_start();?>
 					 <li><a href="#">July 2013</a></li>
 					 </ul>
 				 </div>
+				 <!--
 				 <div class="categories">
 					 <h3>CATEGORIES</h3>
 					 <ul>
@@ -38,6 +38,7 @@ ob_start();?>
 					 <li><a href="#">Cras iaculis ultricies</a></li>
 					 </ul>
 				 </div>
+				-->
 				 <div class="clearfix"></div>
 				</div>
 <?php
