@@ -13,9 +13,8 @@ ob_start();?>
 				 <div class="comments">
 					 <h3>DERNIERS COMMENTAIRES</h3>
 					 <ul>
-					 	<?php foreach($topComs AS $topCom) : ?>
 					 		<li><a href="#">Amada Doe </a> on <a href="#">Hello World!</a></li>
-					 	<?php endforeach; ?>
+					 	
 					 </ul>
 				 </div>
 				 <div class="clearfix"></div>

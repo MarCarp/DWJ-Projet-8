@@ -19,7 +19,7 @@ class Routeur
 			}
 			elseif($_GET['action']=='post')
 			{
-			require 'Controler/controlerPost.php';
+				require 'Controler/controlerPost.php';
 			}
 		}
 		else

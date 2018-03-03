@@ -17,14 +17,17 @@ ob_start();?>
 		  		   <div class="clearfix"></div>
 		  		   </li>
 		  	  </ul>
+		  	  <?php foreach($coms AS $com) : ?>
+		  	  	<p>
+		  	  		<h4><?= $com['author'] . ' le ' . $com['datefr'] . '</h4>' ?>
+		  	  	<?= $com['content'] ?></p><br>
+		  	  <?php endforeach; ?>
 			  <div class="content-form">
 					 <h3>Leave a comment</h3>
-					<form>
-						<input type="text" placeholder="Name" required/>
-						<input type="text" placeholder="Email" required/>
-						<input type="text" placeholder="Phone" required/>
+					<form method='post' action='index.php?action=addComment'>
+						<input type="text" placeholder="Nom" required/>
 						<textarea placeholder="Message"></textarea>
-						<input type="submit" value="SEND"/>
+						<input type="submit" value="AJOUTER"/>
 				   </form>
 						 </div>
 		  </div>
