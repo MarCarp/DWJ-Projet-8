@@ -3,6 +3,11 @@ require_once 'Model/Model.php';
 
 class Comment extends Model
 {
+	public function addComment($postId, $author, $comment)
+	{
+		$sql = 'INSERT INTO blg_comments(POST_ID, COM_AUTHOR, COM_CONTENT, COM_DATE) VALUES(?, ?, ?, NOW())';
+		$this->request($sql, array($postId, $author, $comment));
+	}
 	public function getComments($postId)
 	{
 		$sql = 'SELECT COM_AUTHOR author, COM_CONTENT content, DATE_FORMAT(COM_DATE, "%e/%m/%Y à %H h %i") datefr FROM blg_comments WHERE POST_ID=? ORDER BY COM_ID';

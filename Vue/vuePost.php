@@ -24,9 +24,9 @@ ob_start();?>
 		  	  <?php endforeach; ?>
 			  <div class="content-form">
 					 <h3>Leave a comment</h3>
-					<form method='post' action='index.php?action=addComment'>
-						<input type="text" placeholder="Nom" required/>
-						<textarea placeholder="Message"></textarea>
+					<form method='post' action='&addComment=true'>
+						<input type="text" name='author' placeholder="Nom" required/>
+						<textarea name='content' placeholder="Message"></textarea>
 						<input type="submit" value="AJOUTER"/>
 				   </form>
 						 </div>
