@@ -11,12 +11,13 @@ ob_start();?>
 					 </ul>
 				 </div>
 				 <div class="comments">
-					 <h3>DERNIERS COMMENTAIRES</h3>
-					 <ul>
-					 		<li><a href="#">Amada Doe </a> on <a href="#">Hello World!</a></li>
-					 	
-					 </ul>
-				 </div>
+				 	<h3>DERNIERS COMMENTAIRES</h3>
+				 	<ul>
+				 		<?php foreach($topComs AS $topCom) : ?>
+				 			<li><a href="#"><?= $topCom['author'] ?></a> on <a href="#"><?= $topCom['title'] ?></a></li>
+				 		<?php endforeach; ?>
+				 		</ul>
+				 	</div>
 				 <div class="clearfix"></div>
 				 <div class="archives">
 					 <h3>ARCHIVES</h3>
