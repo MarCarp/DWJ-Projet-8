@@ -19,13 +19,6 @@ class Routeur
 			}
 			elseif($_GET['action']=='post')
 			{
-				if(isset($_GET['addComment']))
-				{
-					$postId = $_GET['id'];
-					$comAuth = $_POST['author'];
-					$comCont = $_POST['content'];
-					$comMng->addComment($postId, $comAuth,$comCont);
-				}
 				require 'Controler/controlerPost.php';
 			}
 		}
