@@ -17,7 +17,8 @@ if(isset($passHash))
 	{
 		if(password_verify($userPassword, $passHash[0]))
 		{
-			echo 'Mot de passe Ok';
+			session_start();
+			$_SESSION['admin'] = $userPseudo;
 		}
 		else
 		{
