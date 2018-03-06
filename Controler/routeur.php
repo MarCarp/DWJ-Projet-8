@@ -14,8 +14,7 @@ class Routeur
 			}
 			elseif($action=='contact')
 			{
-				$title = 'testContact';
-				require 'Vue/vueContact.php';
+				require 'Controler/controlerContact.php';
 			}
 			elseif($_GET['action']=='post')
 			{
