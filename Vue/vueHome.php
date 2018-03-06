@@ -14,12 +14,12 @@ ob_start();?>
 						 <img src="Content/Images/<?= $post['image']?> " alt=""/>
 						 <div class="post-info">
 						 <h4><a href="?action=post&id=<?=$post['id'] . '">' . $post['title'] . '</a>' . $post['datefr'] . ' / ' . $comCount['comCount'] .' Commentaires</h4>'?>
-						 <p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis.</p>
+						 <p><?= $post['content'] ?></p>
 						 <a href="?action=post&id=<?=$post['id']?>"><span></span>VOIR PLUS</a>
 						 </div>
 					 </div>
 					 <?php endforeach; ?>
-					 
+
 				 </div>
 			  </div>
 			  <?= $contentSide ?>

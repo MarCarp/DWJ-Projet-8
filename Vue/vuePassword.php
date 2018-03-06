@@ -9,7 +9,7 @@
 		<input type="text" name="adminId"><br/>
 		<label>Mot de passe : </label><br/>
 		<input type="password" name="adminPass"><br />
-		<input type="submit" value="GO">
+		<input type="submit" value="Envoyer">
 	</form>
 </body>
 </html>
