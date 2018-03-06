@@ -22,4 +22,22 @@ class Post extends Model
 		$post = $this->request($sql, array($postId));
 		return $post->fetch();		
 	}
+
+	public function deletePost($postId)
+	{
+		$sql = 'DELETE FROM blg_posts WHERE POST_ID = ?'
+		$this->request($sql, array($postId));
+	}
+
+	public function createPost($postContent, $postTitle)
+	{
+		$sql = 'INSERT INTO blg_posts(POST_TITLE, POST_CONTENT, POST_DATE) VALUES(?, ?, NOW())';
+		$this->request($sql, array($postContent, $postTitle));
+	}
+
+	public function updatePost($postTitle, $postContent, $postId)
+	{
+		$sql = 'UPDATE blg_posts SET POST_TITLE=?, POST_CONTENT=? WHERE POST_ID=?';
+		$this->request($sql, array($postContent, $postTitle, $postId));
+	}
 }

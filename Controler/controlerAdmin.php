@@ -2,6 +2,8 @@
 
 require 'Model/Admin.php';
 
+//VÉRIFICATION DU MOT DE PASSE
+
 $userPseudo = $_POST['adminId'];
 $userPassword = $_POST['adminPass'];
 
@@ -30,3 +32,6 @@ if(isset($passHash))
 		echo 'Aucun utilisateur à ce nom.';
 	}
 }
+
+//GESTION DES POSTS
+require 'Model/Post.php';
