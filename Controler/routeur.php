@@ -2,22 +2,23 @@
 
 class Routeur
 {
+	private $_controler;
 	public function RouteRequest($action=null)
 	{
-		$controler->side();
+		$this->_controler = new Controler();
 		if($action!=null)
 		{
 			if($action=='about')
 			{
-				$controler->about();
+				$this->_controler->about();
 			}
 			elseif($action=='contact')
 			{
-				$controler->contact();
+				$this->_controler->contact();
 			}
 			elseif($_GET['action']=='post')
 			{
-				$controler->post();
+				$this->_controler->post();
 			}
 			elseif ($_GET['page'])
 			{
@@ -25,7 +26,7 @@ class Routeur
 		}
 		else
 		{
-			$controler->home();
+			$this->_controler->home();
 		}
 	}
 }

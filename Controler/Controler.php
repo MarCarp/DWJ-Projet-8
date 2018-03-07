@@ -1,9 +1,12 @@
 <?php
+
 class Controler
 {
-	private $_postMng, $_comMng;
+	public $_postMng, $_comMng;
 	public function __construct()
 	{
+		require_once 'Model/Post.php';
+		require_once 'Model/Comment.php';
 		$this->_postMng = new Post();
 		$this->_comMng = new Comment();
 	}
@@ -13,7 +16,9 @@ class Controler
 		$title = 'testIndex';
 		$posts = $this->_postMng->getPosts($page);
 		$lastPosts = $posts;
-		$this->callVue('home');
+		require 'Vue/vueHome.php';
+		require 'Vue/template.php';
+		//$this->callVue('home');
 	}
 	public function about()
 	{
@@ -56,11 +61,11 @@ class Controler
 	{
 		$topPosts = $this->_postMng->lastPosts();
 		$topComs = $this->_comMng->lastComments();
-
-		$this->callVue('side');
+		require 'Vue/vueSide.php';
 	}
-	private function callVue($vue)
+	public function callVue($vue)
 	{
+		$this->side();
 		require 'Vue/vue' . ucfirst($vue) .'.php';
 		require 'Vue/template.php';
 	}

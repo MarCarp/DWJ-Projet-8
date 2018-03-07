@@ -1,16 +1,11 @@
 <?php
 
-function chargerClasse($classe)
-{
-  require $classe . '.php'; 
-}
-
-spl_autoload_register('chargerClasse');
+require 'Controler/Routeur.php';
+require 'Controler/Controler.php';
 
 try
 {
 	$routeur = new Routeur();
-	$controler = new Controler();
 
 	if(isset($_GET['action']))
 	{

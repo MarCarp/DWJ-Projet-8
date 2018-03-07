@@ -1,4 +1,5 @@
 <?php
+
 abstract class Model
 {
 	private $_db;
@@ -12,7 +13,16 @@ abstract class Model
 		else
 		{
 			$q = $this->getDb()->prepare($sql);
-			$q->execute($params);
+			$i = 1;
+			foreach($params as $param)
+			{
+				if(is_int($param))
+					{$q->bindValue($i,$param, PDO::PARAM_INT);}
+				else
+					{$q->bindValue($i,$param, PDO::PARAM_INT);}
+				$i++;
+			}
+			$q->execute();
 		}
 		return $q;
 	}
@@ -22,6 +32,8 @@ abstract class Model
 		if($this->_db == null)
 		{
 			$this->_db = new PDO('mysql:host=localhost;dbname=projet_8;charset=utf8','root','');
+			$this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+
 		}
 		return $this->_db;
 	}

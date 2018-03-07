@@ -1,7 +1,5 @@
 <?php
 
-require 'Model/Model.php';
-
 class Admin extends Model
 {
 	public function idPass($id)

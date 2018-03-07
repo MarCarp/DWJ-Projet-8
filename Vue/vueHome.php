@@ -7,9 +7,7 @@ ob_start();?>
 			 <div class="col-md-8 content-main">
 				 <div class="content-grid">					 
 					 
-					 <?php foreach($posts AS $post) :
-					 $comCount = $comMng->comCount($post['id']);
-					 ?>
+					 <?php foreach($posts AS $post): ?>
 					 <div class="content-grid-info">
 						 <img src="Content/Images/<?= $post['image']?> " alt=""/>
 						 <div class="post-info">
