@@ -8,3 +8,8 @@ form
 	margin: 500px auto;
 	border-radius: 5px;
 }
+.post
+{
+	padding: 30px;
+	background-color: #A0C0FF;
+}

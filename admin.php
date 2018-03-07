@@ -1,11 +1,8 @@
 <?php
 $title = 'testAdmin';
-if(isset($_SESSION['admin']))
+if(isset($_SESSION['admin'])||isset($_POST['adminPass']))
 {
-	require 'vueAdmin.php';
-}
-elseif(isset($_POST['adminPass']))
-{
+	
 	require 'Controler/controlerAdmin.php';
 }
 else

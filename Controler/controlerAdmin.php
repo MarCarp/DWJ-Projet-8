@@ -1,6 +1,18 @@
 <?php
 
 require 'Model/Admin.php';
+//GESTION DES POSTS
+require 'Model/Post.php';
+$postMng = new Post();
+$posts = $postMng->getPosts();
+
+//SUPPRESSION D'UN POST
+if(isset($_GET['delete']))
+{
+	$idPost = (int)$_GET['delete'];
+	$postMng->deletePost($idPost);
+	require 'Vue/vueAdmin.php';
+}
 
 //VÉRIFICATION DU MOT DE PASSE
 
@@ -21,6 +33,7 @@ if(isset($passHash))
 		{
 			session_start();
 			$_SESSION['admin'] = $userPseudo;
+			require 'Vue/vueAdmin.php';
 		}
 		else
 		{
@@ -33,5 +46,3 @@ if(isset($passHash))
 	}
 }
 
-//GESTION DES POSTS
-require 'Model/Post.php';

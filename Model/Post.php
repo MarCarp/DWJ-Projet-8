@@ -9,10 +9,10 @@ class Post extends Model
 		return $posts;
 	}
 
-	public function getPosts()
+	public function getPosts($page)
 	{
-		$sql = 'SELECT POST_ID id, POST_TITLE title, POST_CONTENT content, POST_IMG image, DATE_FORMAT(POST_DATE, "%b %e, %Y") datefr FROM blg_posts ORDER BY POST_ID DESC';
-		$posts = $this->request($sql);
+		$sql = 'SELECT POST_ID id, POST_TITLE title, POST_CONTENT content, POST_IMG image, DATE_FORMAT(POST_DATE, "%b %e, %Y") datefr FROM blg_posts ORDER BY POST_ID DESC LIMIT ?,5';
+		$posts = $this->request($sql, array($page));
 		return $posts;
 	}
 
@@ -25,19 +25,19 @@ class Post extends Model
 
 	public function deletePost($postId)
 	{
-		$sql = 'DELETE FROM blg_posts WHERE POST_ID = ?'
+		$sql = 'DELETE FROM blg_posts WHERE POST_ID = ?';
 		$this->request($sql, array($postId));
 	}
 
-	public function createPost($postContent, $postTitle)
+	public function createPost($postContent, $postTitle, $postImg)
 	{
-		$sql = 'INSERT INTO blg_posts(POST_TITLE, POST_CONTENT, POST_DATE) VALUES(?, ?, NOW())';
-		$this->request($sql, array($postContent, $postTitle));
+		$sql = 'INSERT INTO blg_posts(POST_TITLE, POST_CONTENT, POST_IMG, POST_DATE) VALUES(?, ?, ?, NOW())';
+		$this->request($sql, array($postContent, $postTitle, $postImg));
 	}
 
-	public function updatePost($postTitle, $postContent, $postId)
+	public function updatePost($postTitle, $postContent, $postImg, $postId)
 	{
-		$sql = 'UPDATE blg_posts SET POST_TITLE=?, POST_CONTENT=? WHERE POST_ID=?';
+		$sql = 'UPDATE blg_posts SET POST_TITLE=?, POST_CONTENT=?, POST_IMG=? WHERE POST_ID=?';
 		$this->request($sql, array($postContent, $postTitle, $postId));
 	}
 }
