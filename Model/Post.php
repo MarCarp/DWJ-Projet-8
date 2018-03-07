@@ -11,8 +11,10 @@ class Post extends Model
 
 	public function getPosts($page)
 	{
+		$index = (int)$page*5;
+		if($index<0){$index=0;}
 		$sql = 'SELECT POST_ID id, POST_TITLE title, POST_CONTENT content, POST_IMG image, DATE_FORMAT(POST_DATE, "%b %e, %Y") datefr FROM blg_posts ORDER BY POST_ID DESC LIMIT ?,5';
-		$posts = $this->request($sql, array($page));
+		$posts = $this->request($sql, array($index));
 		return $posts;
 	}
 

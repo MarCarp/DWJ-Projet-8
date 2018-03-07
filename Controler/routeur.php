@@ -19,6 +19,9 @@ class Routeur
 			{
 				$controler->post();
 			}
+			elseif ($_GET['page'])
+			{
+			}
 		}
 		else
 		{

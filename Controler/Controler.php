@@ -7,10 +7,11 @@ class Controler
 		$this->_postMng = new Post();
 		$this->_comMng = new Comment();
 	}
-	public function home()
+	//APPELLE LA VUE PAR DÉFAUT : ACCUEIL
+	public function home($page=0)
 	{
 		$title = 'testIndex';
-		$posts = $this->_postMng->getPosts();
+		$posts = $this->_postMng->getPosts($page);
 		$lastPosts = $posts;
 		$this->callVue('home');
 	}

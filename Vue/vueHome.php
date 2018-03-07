@@ -19,7 +19,13 @@ ob_start();?>
 						 </div>
 					 </div>
 					 <?php endforeach; ?>
-
+					 <div id=pagination>
+					 	<button><a href="#"><<</a></button>
+					 	<button><a href="#"><</a></button>
+					 	<p>Page 1</p>
+					 	<button><a href="#">></a></button>
+					 	<button><a href="#">>></a></button>
+					 </div>
 				 </div>
 			  </div>
 			  <?= $contentSide ?>
