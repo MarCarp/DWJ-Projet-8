@@ -24,6 +24,5 @@ class Routeur
 		{
 			$controler->home();
 		}
-		require 'Vue/template.php';
 	}
 }

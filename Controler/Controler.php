@@ -1,17 +1,23 @@
 <?php
 class Controler
 {
+	private $_postMng, $_comMng;
+	public function __construct()
+	{
+		$this->_postMng = new Post();
+		$this->_comMng = new Comment();
+	}
 	public function home()
 	{
 		$title = 'testIndex';
-		$posts = $postMng->getPosts();
+		$posts = $this->_postMng->getPosts();
 		$lastPosts = $posts;
-		require 'Vue/vueHome.php';
+		$this->callVue('home');
 	}
 	public function about()
 	{
 		$title = 'testAbout';
-		require 'Vue/vueAbout.php';
+		$this->callVue('about');
 	}
 	public function contact()
 	{
@@ -26,7 +32,7 @@ class Controler
 			'X-Mailer: PHP/' . phpversion();
 			mail($to, $subject, $message, $headers);
 		}
-		require 'Vue/vueContact.php';
+		$this->callVue('contact');
 	}
 	public function post()
 	{
@@ -40,19 +46,21 @@ class Controler
 		}				
 		$title = 'testPost';
 		$postId = $_GET['id'];
-		$post = $postMng->getPost($postId);
-		$coms = $comMng->getComments($postId);
+		$post = $this->_postMng->getPost($postId);
+		$coms = $this->_comMng->getComments($postId);
 
-		require 'Vue/vuePost.php';
+		$this->callVue('post');
 	}
 	public function side()
 	{
-		$postMng = new Post();
-		$comMng = new Comment();
+		$topPosts = $this->_postMng->lastPosts();
+		$topComs = $this->_comMng->lastComments();
 
-		$topPosts = $postMng->lastPosts();
-		$topComs = $comMng->lastComments();
-
-		require 'Vue/vueSide.php';
+		$this->callVue('side');
+	}
+	private function callVue($vue)
+	{
+		require 'Vue/vue' . ucfirst($vue) .'.php';
+		require 'Vue/template.php';
 	}
 }
