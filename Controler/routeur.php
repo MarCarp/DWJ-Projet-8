@@ -4,26 +4,25 @@ class Routeur
 {
 	public function RouteRequest($action=null)
 	{
-		require 'Controler/controlerSide.php';
+		$controler->side();
 		if($action!=null)
 		{
 			if($action=='about')
 			{
-				$title = 'testAbout';				
-				require 'Vue/vueAbout.php';
+				$controler->about();
 			}
 			elseif($action=='contact')
 			{
-				require 'Controler/controlerContact.php';
+				$controler->contact();
 			}
 			elseif($_GET['action']=='post')
 			{
-				require 'Controler/controlerPost.php';
+				$controler->post();
 			}
 		}
 		else
 		{
-			require 'Controler/controlerHome.php';
+			$controler->home();
 		}
 		require 'Vue/template.php';
 	}
