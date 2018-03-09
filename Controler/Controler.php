@@ -11,11 +11,12 @@ class Controler
 		$this->_comMng = new Comment();
 	}
 	//APPELLE LA VUE PAR DÉFAUT : ACCUEIL
-	public function home($page=0)
+	public function home($page)
 	{
 		$title = 'testIndex';
 		$posts = $this->_postMng->getPosts($page);
 		$lastPosts = $posts;
+		$this->side();
 		require 'Vue/vueHome.php';
 		require 'Vue/template.php';
 		//$this->callVue('home');
@@ -68,5 +69,12 @@ class Controler
 		$this->side();
 		require 'Vue/vue' . ucfirst($vue) .'.php';
 		require 'Vue/template.php';
+	}
+	public function pagination($page)
+	{
+		if($page == 'start')
+		{
+			
+		}
 	}
 }

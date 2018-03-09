@@ -20,6 +20,11 @@ ul,label{
 	margin:0;
 	padding:0;
 }
+/*----HORS TEMPLATE---*/
+#pagination
+{
+  text-align: center;
+}
 /*----start-container---*/
 .logo{
 float:left;

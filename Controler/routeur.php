@@ -3,30 +3,42 @@
 class Routeur
 {
 	private $_controler;
-	public function RouteRequest($action=null)
+
+	public function RouteRequest()
 	{
-		$this->_controler = new Controler();
-		if($action!=null)
+		try
 		{
-			if($action=='about')
+			require 'Controler/Controler.php';
+			$this->_controler= new Controler();
+			if(isset($_GET['action']))
 			{
-				$this->_controler->about();
+				$action = $_GET['action'];
+				if($action=='about')
+				{
+					$this->_controler->about();
+				}
+				elseif($action=='contact')
+				{
+					$this->_controler->contact();
+				}
+				elseif($action=='post')
+				{
+					$this->_controler->post();
+				}
 			}
-			elseif($action=='contact')
+			elseif (isset($_GET['page']))
 			{
-				$this->_controler->contact();
+				$page = (int)$_GET['page'];
+				$this->_controler->home($page);
 			}
-			elseif($_GET['action']=='post')
+			else
 			{
-				$this->_controler->post();
-			}
-			elseif ($_GET['page'])
-			{
+				$this->_controler->home(0);
 			}
 		}
-		else
+		catch (Exception $e)
 		{
-			$this->_controler->home();
+			die('Erreur : ' . $e->getMessage());
 		}
 	}
 }
