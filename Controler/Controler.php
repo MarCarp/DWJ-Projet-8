@@ -2,7 +2,7 @@
 
 class Controler
 {
-	public $_postMng, $_comMng;
+	public $_postMng, $_comMng, $_vueSide;
 	public function __construct()
 	{
 		require_once 'Model/Post.php';
@@ -16,15 +16,17 @@ class Controler
 		$title = 'testIndex';
 		$posts = $this->_postMng->getPosts($page);
 		$lastPosts = $posts;
-		$this->side();
+		$contentSide = $this->side();
+		$pages = $this->pagination($page);
+		extract($pages);
 		require 'Vue/vueHome.php';
 		require 'Vue/template.php';
-		//$this->callVue('home');
+		//$this->callVue('Home');
 	}
 	public function about()
 	{
 		$title = 'testAbout';
-		$this->callVue('about');
+		$this->callVue('About');
 	}
 	public function contact()
 	{
@@ -39,7 +41,7 @@ class Controler
 			'X-Mailer: PHP/' . phpversion();
 			mail($to, $subject, $message, $headers);
 		}
-		$this->callVue('contact');
+		$this->callVue('Contact');
 	}
 	public function post()
 	{
@@ -63,18 +65,32 @@ class Controler
 		$topPosts = $this->_postMng->lastPosts();
 		$topComs = $this->_comMng->lastComments();
 		require 'Vue/vueSide.php';
+		return $contentSide;
 	}
 	public function callVue($vue)
 	{
-		$this->side();
-		require 'Vue/vue' . ucfirst($vue) .'.php';
+		$contentSide = $this->side();
+		require 'Vue/vue' . $vue .'.php';
 		require 'Vue/template.php';
 	}
 	public function pagination($page)
 	{
-		if($page == 'start')
+		$pages = [];
+		$posts = $this->_postMng->countPosts();
+
+		$pages['pActu'] = (1+(int)$page);
+		$pages['pTotal'] = ($posts/5)-1;
+		$pages['pPrec'] = $page-1;
+		$pages['pSuiv'] = $page+1;
+		if($page <= 0)
 		{
-			
+			$pages['pPrec'] = 0;
 		}
+		elseif($page >= $pages['pTotal'])
+		{
+			$pages['pSuiv'] = $pages['pTotal'];
+		}
+		
+		return $pages;
 	}
 }

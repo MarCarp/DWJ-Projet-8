@@ -20,6 +20,12 @@ class Post extends Model
 		$posts = $this->request($sql, array($index,5));
 		return $posts;
 	}
+	public function countPosts()
+	{
+		$sql = 'SELECT COUNT(POST_ID) FROM blg_posts';
+		$q = $this->request($sql);
+		return $q->fetchColumn();
+	}
 
 	public function getPost($postId)
 	{

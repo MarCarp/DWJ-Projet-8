@@ -11,18 +11,18 @@ ob_start();?>
 					 <div class="content-grid-info">
 						 <img src="Content/Images/<?= $post['image']?> " alt=""/>
 						 <div class="post-info">
-						 <h4><a href="?action=post&id=<?=$post['id'] . '">' . $post['title'] . '</a>' . $post['datefr'] . ' / ' . $comCount['comCount'] .' Commentaires</h4>'?>
+						 <h4><a href="?action=post&id=<?=$post['id'] . '">' . $post['title'] . '</a>' . $post['datefr'] . ' / ' . $post['coms'] .' Commentaires</h4>'?>
 						 <p><?= $post['content'] ?></p>
 						 <a href="?action=post&id=<?=$post['id']?>"><span></span>VOIR PLUS</a>
 						 </div>
 					 </div>
 					 <?php endforeach; ?>
 					 <div id="pagination">
-					 	<button disabled><a href="?page=0"> << </a></button>
-					 	<button><a href="#"> < </a></button>
-					 	<span>Page <?= (1+(int)$_GET['page']) ?></span>
-					 	<button><a href="?page=2"> > </a></button>
-					 	<button><a href="#"> >> </a></button>
+					 	<button><a href="?page=0"> << </a></button>
+					 	<button><a href="?page=<?= $pPrec ?>"> < </a></button>
+					 	<span>Page <?= $pActu . ' / ' . ($pTotal+1) ?></span>
+					 	<button><a href="?page=<?= $pSuiv ?>"> > </a></button>
+					 	<button><a href="?page=<?= $pTotal ?>"> >> </a></button>
 					 </div>
 				 </div>
 			  </div>
