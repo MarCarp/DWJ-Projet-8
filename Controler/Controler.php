@@ -23,6 +23,21 @@ class Controler
 		require 'Vue/template.php';
 		//$this->callVue('Home');
 	}
+	public function admin()
+	{
+		if(isset($_SESSION['admin']))
+		{
+			$this->home(0);
+		}
+		elseif(isset($_POST['adminId'])&&isset($_POST['adminPass']))
+		{
+			require 'Controler/controlerAdmin.php';
+		}
+		else
+		{
+			require 'vue/vuePassword.php';
+		}
+	}
 	public function about()
 	{
 		$title = 'testAbout';
@@ -58,7 +73,11 @@ class Controler
 		$post = $this->_postMng->getPost($postId);
 		$coms = $this->_comMng->getComments($postId);
 
-		$this->callVue('post');
+		$contentSide = $this->side();
+		require 'Vue/vuePost.php';
+		require 'Vue/template.php';
+
+		//$this->callVue('post');
 	}
 	public function side()
 	{

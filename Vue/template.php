@@ -71,7 +71,7 @@
 <!---->
 <div class="footer">
 	 <div class="container">
-	 <p><a href="admin.php">Section Admin</a></p>
+	 <p><a href="index.php?action=admin">Section Admin</a></p>
 	 </div>
 </div>
 </body>

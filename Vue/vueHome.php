@@ -11,9 +11,13 @@ ob_start();?>
 					 <div class="content-grid-info">
 						 <img src="Content/Images/<?= $post['image']?> " alt=""/>
 						 <div class="post-info">
-						 <h4><a href="?action=post&id=<?=$post['id'] . '">' . $post['title'] . '</a>' . $post['datefr'] . ' / ' . $post['coms'] .' Commentaires</h4>'?>
+						 <h4><a href="?action=post&id= <?=$post['id'] .'">' .  $post['title'] . '</a>' . $post['datefr'] . ' / ' . ' Commentaires</h4>'?>
 						 <p><?= $post['content'] ?></p>
 						 <a href="?action=post&id=<?=$post['id']?>"><span></span>VOIR PLUS</a>
+						 <?php
+						 if(isset($_SESSION['admin'])){
+						 echo '<a href="?action=delete&id=<?=$post[\'id\']?>"><span></span>SUPPRIMER</a>';
+						}?>
 						 </div>
 					 </div>
 					 <?php endforeach; ?>
