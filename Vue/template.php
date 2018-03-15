@@ -72,6 +72,12 @@
 <div class="footer">
 	 <div class="container">
 	 <p><a href="index.php?action=admin">Section Admin</a></p>
+	 <?php
+	 if(isset($_SESSION['admin']))
+	 {
+	 	echo '<p><a href="index.php?action=deco">Deconnexion</a></p>';
+	 }
+	 ?>
 	 </div>
 </div>
 </body>

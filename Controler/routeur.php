@@ -10,9 +10,19 @@ class Routeur
 		{
 			require_once 'Controler/Controler.php';
 			$this->_controler= new Controler();
+
+			if(isset($_SESSION['admin']))
+			{
+				session_start();
+			}
+
 			if(isset($_GET['action']))
 			{
 				$action = $_GET['action'];
+				if($action=='deco')
+				{
+					session_destroy();
+				}
 				if($action=='admin')
 				{
 					$this->_controler->admin();

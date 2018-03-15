@@ -16,7 +16,8 @@ class Post extends Model
 		$index = (int)$page*5;
 		if($index<0){$index=0;}
 
-		$sql = 'SELECT POST_ID id, POST_TITLE title, POST_CONTENT content, POST_IMG image, DATE_FORMAT(POST_DATE, "%b %e, %Y") datefr FROM blg_posts ORDER BY POST_ID DESC LIMIT ?,?';
+		$sql = 'SELECT bp.POST_ID id, POST_TITLE title, POST_CONTENT content, POST_IMG image, DATE_FORMAT(POST_DATE, "%b %e, %Y") datefr,
+			COUNT(bc.COM_ID) coms FROM blg_posts bp LEFT OUTER JOIN blg_comments bc ON bc.POST_ID = bp.POST_ID GROUP BY id, title, content, image, datefr ORDER BY bp.POST_ID DESC LIMIT ?,?';
 		$posts = $this->request($sql, array($index,5));
 		return $posts;
 	}
