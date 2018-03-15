@@ -1,11 +1,12 @@
 <?php
 require_once 'Model/Post.php';
 require_once 'Model/Comment.php';
+require_once 'Vue/Vue.php';
 
 class Controler
 {
 	public $_postMng, $_comMng, $_vueSide;
-	
+
 	public function __construct()
 	{
 		$this->_postMng = new Post();
@@ -14,7 +15,6 @@ class Controler
 	//APPELLE LA VUE PAR DÉFAUT : ACCUEIL
 	public function home($page)
 	{
-		$title = 'testIndex';
 		$posts = $this->_postMng->getPosts($page);
 		$lastPosts = $posts;
 		$contentSide = $this->side();
@@ -22,7 +22,7 @@ class Controler
 		extract($pages);
 		require 'Vue/vueHome.php';
 		require 'Vue/template.php';
-		//$this->callVue('Home');
+		$this->callVue('Home');
 	}
 	public function admin()
 	{

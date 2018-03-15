@@ -1,4 +1,5 @@
 <?php
+$title = 'testIndex';
 ob_start();?>
 
 <div class="content">
