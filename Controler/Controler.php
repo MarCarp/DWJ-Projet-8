@@ -44,7 +44,6 @@ class Controler
 	}
 	public function contact()
 	{
-		$title = 'testContact';
 		if(isset($_POST['message']))
 		{
 			$to      = 'jean.forteroche@ecrivain.com';
@@ -55,7 +54,8 @@ class Controler
 			'X-Mailer: PHP/' . phpversion();
 			mail($to, $subject, $message, $headers);
 		}
-		$this->callVue('Contact');
+		$vue = new Vue("Contact");
+		$vue->generate();
 	}
 	public function post()
 	{
