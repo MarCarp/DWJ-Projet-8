@@ -1,4 +1,5 @@
 <?php
+require_once 'Controler/Controler.php';
 
 class Routeur
 {
@@ -8,7 +9,6 @@ class Routeur
 	{
 		try
 		{
-			require_once 'Controler/Controler.php';
 			$this->_controler= new Controler();
 
 			if(isset($_SESSION['admin']))

@@ -1,12 +1,13 @@
 <?php
+require_once 'Model/Post.php';
+require_once 'Model/Comment.php';
 
 class Controler
 {
 	public $_postMng, $_comMng, $_vueSide;
+	
 	public function __construct()
 	{
-		require_once 'Model/Post.php';
-		require_once 'Model/Comment.php';
 		$this->_postMng = new Post();
 		$this->_comMng = new Comment();
 	}
