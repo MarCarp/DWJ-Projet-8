@@ -1,5 +1,6 @@
 <?php
 $this->_title = 'testIndex';
+extract($pages);
 ?>
 
 <div class="content">
@@ -30,11 +31,11 @@ $this->_title = 'testIndex';
 					 </div>
 					 <?php endforeach; ?>
 					 <div id="pagination">
-					 	<button><a href="?page=0"> << </a></button>
-					 	<button><a href="?page=<?= $pPrec ?>"> < </a></button>
+					 	<a href="?page=0"><button> << </button></a>
+					 	<a href="?page=<?= $pPrec ?>"><button> < </button></a>
 					 	<span>Page <?= $pActu . ' / ' . ($pTotal+1) ?></span>
-					 	<button><a href="?page=<?= $pSuiv ?>"> > </a></button>
-					 	<button><a href="?page=<?= $pTotal ?>"> >> </a></button>
+					 	<a href="?page=<?= $pSuiv ?>"><button> > </button></a>
+					 	<a href="?page=<?= $pTotal ?>"><button> >> </button></a>
 					 </div>
 				 </div>
 			  </div>

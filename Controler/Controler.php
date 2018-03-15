@@ -13,17 +13,31 @@ class Controler
 		$this->_comMng = new Comment();
 	}
 	//APPELLE LA VUE PAR DÉFAUT : ACCUEIL
-	public function home($page)
+	public function home($page=0)
 	{
 		$posts = $this->_postMng->getPosts($page);
 		$pages = $this->pagination($page);
 		$contentSide = $this->side();
-		$posts;
-		$pages;
-		$contentSide;
 		$data = array('posts'=>$posts,'pages'=>$pages,'contentSide'=>$contentSide);
 		$vue = new Vue('Home');
 		$vue->generate($data);
+	}
+	public function post()
+	{
+		$postId = $_GET['id'];
+		$post = $this->_postMng->getPost($postId);
+		$coms = $this->_comMng->getComments($postId);
+		$contentSide = $this->side();
+		$data = array('post'=>$post,'coms'=>$coms,'contentSide'=>$contentSide);
+		$vue = new Vue('Post');
+		$vue->generate($data);
+	}
+	private function addComment()
+	{
+		$postId = $_GET['id'];
+		$comAuth = $_POST['author'];
+		$comCont = $_POST['content'];
+		$this->_comMng->addComment($postId, $comAuth,$comCont);
 	}
 	private function side()
 	{
@@ -68,28 +82,7 @@ class Controler
 		$vue = new Vue("Contact");
 		$vue->generate();
 	}
-	public function post()
-	{
-		//Vérifie la variable $_GET dans le cas d'un ajout de commentaire
-		if(isset($_GET['addComment']))
-		{
-			$postId = $_GET['id'];
-			$comAuth = $_POST['author'];
-			$comCont = $_POST['content'];
-			$comMng->addComment($postId, $comAuth,$comCont);
-		}				
-		$title = 'testPost';
-		$postId = $_GET['id'];
-		$post = $this->_postMng->getPost($postId);
-		$coms = $this->_comMng->getComments($postId);
-
-		$contentSide = $this->side();
-		require 'Vue/vuePost.php';
-		require 'Vue/template.php';
-
-		//$this->callVue('post');
-	}
-	public function pagination($page)
+	private function pagination($page)
 	{
 		$pages = [];
 		$posts = $this->_postMng->countPosts();
