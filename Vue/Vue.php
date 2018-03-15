@@ -1,17 +1,26 @@
 <?php
 class Vue
 {
-	private $_file, $_title;
+	private $_file, $_action, $_title;
 	public function __construct($action)
 	{
 		$this->_file = "Vue/vue" . $action . ".php";
+		$this->_action = $action;
 	}
 
-	public function generate($data=[])
+	public function generate($data=array())
 	{
-		$content = $this->generateFile($this->_file, $data);
-		$vue = $this->generateFile('Vue/template.php', array('title' => $this->_title, 'content' => $content));
-		echo $vue;
+		if($this->_action == 'Side')
+		{
+			$content = $this->generateFile($this->_file, $data);
+			return $content;
+		}
+		else
+		{
+			$content = $this->generateFile($this->_file, $data);
+			$vue = $this->generateFile('Vue/template.php', array('title' => $this->_title, 'content' => $content));
+			echo $vue;
+		}
 	}
 
 	private function generateFile($file, $data)

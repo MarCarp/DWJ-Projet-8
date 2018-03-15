@@ -1,6 +1,6 @@
 <?php
-$title = 'testIndex';
-ob_start();?>
+$this->_title = 'testIndex';
+?>
 
 <div class="content">
 	 <div class="container">
@@ -43,6 +43,3 @@ ob_start();?>
 		  </div>
 	  </div>
 </div>
-
-<?php
-$contentBody = ob_get_clean();?>

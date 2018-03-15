@@ -16,11 +16,22 @@ class Controler
 	public function home($page)
 	{
 		$posts = $this->_postMng->getPosts($page);
+		$pages = $this->pagination($page);
+		$contentSide = $this->side();
+		$posts;
+		$pages;
+		$contentSide;
+		$data = array('posts'=>$posts,'pages'=>$pages,'contentSide'=>$contentSide);
+		$vue = new Vue('Home');
+		$vue->generate($data);
+	}
+	private function side()
+	{
 		$topPosts = $this->_postMng->lastPosts();
 		$topComs = $this->_comMng->lastComments();
-		$pages = $this->pagination($page);
-		extract($pages);
-		$vue = new Vue('Home');
+		$tops = array('topPosts'=>$topPosts,'topComs'=>$topComs);
+		$vue = new Vue('Side');
+		return $vue->generate($tops);
 	}
 	public function admin()
 	{
@@ -77,12 +88,6 @@ class Controler
 		require 'Vue/template.php';
 
 		//$this->callVue('post');
-	}
-	public function callVue($vue)
-	{
-		$contentSide = $this->side();
-		require 'Vue/vue' . $vue .'.php';
-		require 'Vue/template.php';
 	}
 	public function pagination($page)
 	{
