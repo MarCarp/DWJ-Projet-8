@@ -5,12 +5,15 @@ class Routeur
 {
 	private $_controler;
 
+	public function __construct()
+	{
+		$this->_controler= new Controler();
+	}
+
 	public function RouteRequest()
 	{
 		try
 		{
-			$this->_controler= new Controler();
-
 			if(isset($_SESSION['admin']))
 			{
 				session_start();

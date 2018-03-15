@@ -1,5 +1,6 @@
 <?php
-ob_start();?>
+$this->_title = 'testAbout';
+?>
 
 <div class="about-content">
 	 <div class="container">
@@ -45,6 +46,3 @@ ob_start();?>
 		  </div>		 
 	  </div>
 </div>
-
-<?php
-$contentBody = ob_get_clean();?>

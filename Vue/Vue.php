@@ -1,16 +1,16 @@
 <?php
 class Vue
 {
-	private $_file, $title;
+	private $_file, $_title;
 	public function __construct($action)
 	{
-		$this->file = "Vue/vue" . $action . ".php";
+		$this->_file = "Vue/vue" . $action . ".php";
 	}
 
-	public function generate($data)
+	public function generate($data=[])
 	{
 		$content = $this->generateFile($this->_file, $data);
-		$vue = $this->generateFile('Vue/template.php', array('title' => $this->title, 'content' => $contenu));
+		$vue = $this->generateFile('Vue/template.php', array('title' => $this->_title, 'content' => $content));
 		echo $vue;
 	}
 

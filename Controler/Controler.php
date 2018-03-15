@@ -5,7 +5,7 @@ require_once 'Vue/Vue.php';
 
 class Controler
 {
-	public $_postMng, $_comMng, $_vueSide;
+	public $_postMng, $_comMng;
 
 	public function __construct()
 	{
@@ -16,13 +16,11 @@ class Controler
 	public function home($page)
 	{
 		$posts = $this->_postMng->getPosts($page);
-		$lastPosts = $posts;
-		$contentSide = $this->side();
+		$topPosts = $this->_postMng->lastPosts();
+		$topComs = $this->_comMng->lastComments();
 		$pages = $this->pagination($page);
 		extract($pages);
-		require 'Vue/vueHome.php';
-		require 'Vue/template.php';
-		$this->callVue('Home');
+		$vue = new Vue('Home');
 	}
 	public function admin()
 	{
@@ -41,8 +39,8 @@ class Controler
 	}
 	public function about()
 	{
-		$title = 'testAbout';
-		$this->callVue('About');
+		$vue = new Vue("About");
+		$vue->generate();
 	}
 	public function contact()
 	{
@@ -79,13 +77,6 @@ class Controler
 		require 'Vue/template.php';
 
 		//$this->callVue('post');
-	}
-	public function side()
-	{
-		$topPosts = $this->_postMng->lastPosts();
-		$topComs = $this->_comMng->lastComments();
-		require 'Vue/vueSide.php';
-		return $contentSide;
 	}
 	public function callVue($vue)
 	{

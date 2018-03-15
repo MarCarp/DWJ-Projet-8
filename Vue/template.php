@@ -66,7 +66,7 @@
 </div>
 <!--/header-->
 
-<?= $contentBody ?>
+<?= $content ?>
 
 <!---->
 <div class="footer">
