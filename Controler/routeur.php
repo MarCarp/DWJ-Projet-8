@@ -28,6 +28,9 @@ class Routeur
 					case 'login':
 						$this->_admin->login();
 						break;
+					case 'deco':
+						$this->_admin->deco();
+						break;
 					case 'about':
 						$this->_controler->about();
 						break;

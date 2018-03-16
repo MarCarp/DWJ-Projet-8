@@ -14,12 +14,17 @@ class Admin
 	{
 		if(isset($_SESSION['admin']))
 		{
-			header('index.php');
+			header('Location: index.php');
 		}
 		else
 		{
-			header('login.php');
+			header('Location: login.php');
 		}
+	}
+	public function deco()
+	{
+		session_unset();
+		header('Location: index.php');
 	}
 	public function delete($idPost)
 	{
@@ -27,7 +32,7 @@ class Admin
 		$postMng->deletePost($idPost);
 		require 'Vue/vueAdmin.php';		
 	}
-	public function verify($pass)
+	public function verify()
 	{
 		$userPseudo = $_POST['adminId'];
 		$userPassword = $_POST['adminPass'];
@@ -41,9 +46,8 @@ class Admin
 			{
 				if(password_verify($userPassword, $passHash[0]))
 				{
-					session_start();
 					$_SESSION['admin'] = $userPseudo;
-					require 'index.php';
+					header('Location: index.php');
 				}
 				else
 				{
