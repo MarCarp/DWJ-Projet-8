@@ -36,13 +36,6 @@ class Post extends Model
 		$post = $this->request($sql, array($postId));
 		return $post->fetch();		
 	}
-
-	public function deletePost($postId)
-	{
-		$sql = 'DELETE FROM blg_posts WHERE POST_ID = ?';
-		$this->request($sql, array($postId));
-	}
-
 	public function createPost($postContent, $postTitle, $postImg)
 	{
 		$sql = 'INSERT INTO blg_posts(POST_TITLE, POST_CONTENT, POST_IMG, POST_DATE) VALUES(?, ?, ?, NOW())';

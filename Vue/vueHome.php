@@ -24,8 +24,8 @@ extract($pages);
 						 <a href="?action=post&id=<?=$post['id']?>"><span></span>VOIR PLUS</a><br />
 						 <?php
 						 if(isset($_SESSION['admin'])){
-						 echo '<a href="?action=delete&id=<?=$post[\'id\']?>"><span></span>SUPPRIMER (Admin)</a><br />';
-						 echo '<a href="?action=delete&id=<?=$post[\'id\']?>"><span></span>MODIFIER (Admin)</a>';
+						 echo '<a href="?action=delete&id=' . $post['id'] . '"><span></span>SUPPRIMER (Admin)</a><br />';
+						 echo '<a href="?action=modify&id=' . $post['id'] . '"><span></span>MODIFIER (Admin)</a>';
 						}?>
 						 </div>
 					 </div>

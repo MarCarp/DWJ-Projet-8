@@ -26,11 +26,19 @@ class Admin
 		session_unset();
 		header('Location: index.php');
 	}
-	public function delete($idPost)
+	public function delete()
 	{
-		$idPost = (int)$_GET['delete'];
-		$postMng->deletePost($idPost);
-		require 'Vue/vueAdmin.php';		
+		if(isset($_SESSION['admin']))
+		{
+			if(isset($_GET['id']))
+			{
+				$idPost = (int)$_GET['id'];
+				$this->_adminMng->deletePost($idPost);
+				header('Location: index.php');
+			}
+			else{throw new Exception("Identifiant de post introuvable");}
+		}
+		else{throw new Exception("Vous n'avez pas les droits pour cette opération");}
 	}
 	public function verify()
 	{

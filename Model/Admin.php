@@ -12,4 +12,9 @@ class Admin extends Model
 		$q = $this->request($sql,array($id));
 		return $q;
 	}
+	public function deletePost($postId)
+	{
+		$sql = 'DELETE FROM blg_posts WHERE POST_ID = ?';
+		$this->request($sql, array($postId));
+	}
 }
