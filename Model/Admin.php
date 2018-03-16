@@ -1,5 +1,9 @@
 <?php
 
+namespace Projet8\Model;
+
+require_once 'Model/Model.php';
+
 class Admin extends Model
 {
 	public function idPass($id)

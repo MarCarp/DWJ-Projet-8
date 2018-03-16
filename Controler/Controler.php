@@ -9,8 +9,8 @@ class Controler
 
 	public function __construct()
 	{
-		$this->_postMng = new Post();
-		$this->_comMng = new Comment();
+		$this->_postMng = new \Projet8\Model\Post();
+		$this->_comMng = new \Projet8\Model\Comment();
 	}
 	//APPELLE LA VUE PAR DÉFAUT : ACCUEIL
 	public function home($page=0)
@@ -61,21 +61,6 @@ class Controler
 			mail($to, $subject, $message, $headers);
 		}
 		$this->contact();
-	}
-	public function admin()
-	{
-		if(isset($_SESSION['admin']))
-		{
-			$this->home(0);
-		}
-		elseif(isset($_POST['adminId'])&&isset($_POST['adminPass']))
-		{
-			require 'Controler/controlerAdmin.php';
-		}
-		else
-		{
-			require 'vue/vuePassword.php';
-		}
 	}
 	public function about()
 	{

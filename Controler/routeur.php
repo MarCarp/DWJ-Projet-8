@@ -22,6 +22,9 @@ class Routeur
 
 				switch($action)
 				{
+					case 'verify':
+						$this->_admin->verify();
+						break;
 					case 'login':
 						$this->_admin->login();
 						break;
