@@ -32,13 +32,6 @@ class Controler
 		$vue = new Vue('Post');
 		$vue->generate($data);
 	}
-	private function addComment()
-	{
-		$postId = $_GET['id'];
-		$comAuth = $_POST['author'];
-		$comCont = $_POST['content'];
-		$this->_comMng->addComment($postId, $comAuth,$comCont);
-	}
 	private function side()
 	{
 		$topPosts = $this->_postMng->lastPosts();
@@ -46,6 +39,28 @@ class Controler
 		$tops = array('topPosts'=>$topPosts,'topComs'=>$topComs);
 		$vue = new Vue('Side');
 		return $vue->generate($tops);
+	}
+	public function addComment()
+	{
+		$postId = $_GET['id'];
+		$comAuth = $_POST['author'];
+		$comCont = $_POST['content'];
+		$this->_comMng->addComment($postId, $comAuth,$comCont);
+		$this->post();
+	}
+	public function send()
+	{
+		if(isset($_POST['message']))
+		{
+			$to      = 'jean.forteroche@ecrivain.com';
+			$subject = 'Contact';
+			$message = $_POST['message'];
+			$headers = 'From: jean.forteroche@ecrivain.com' . "\r\n" .
+			'Reply-To: jean.forteroche@ecrivain.com' . "\r\n" .
+			'X-Mailer: PHP/' . phpversion();
+			mail($to, $subject, $message, $headers);
+		}
+		$this->contact();
 	}
 	public function admin()
 	{
@@ -69,16 +84,7 @@ class Controler
 	}
 	public function contact()
 	{
-		if(isset($_POST['message']))
-		{
-			$to      = 'jean.forteroche@ecrivain.com';
-			$subject = 'Contact';
-			$message = $_POST['message'];
-			$headers = 'From: jean.forteroche@ecrivain.com' . "\r\n" .
-			'Reply-To: jean.forteroche@ecrivain.com' . "\r\n" .
-			'X-Mailer: PHP/' . phpversion();
-			mail($to, $subject, $message, $headers);
-		}
+		
 		$vue = new Vue("Contact");
 		$vue->generate();
 	}

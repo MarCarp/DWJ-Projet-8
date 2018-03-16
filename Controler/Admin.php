@@ -1,13 +1,20 @@
 <?php
 
-require 'Model/Admin.php';
-
-//SUPPRESSION D'UN POST
-if(isset($_GET['delete']))
+require_once 'Model/Admin.php';
+class Admin
 {
-	$idPost = (int)$_GET['delete'];
-	$postMng->deletePost($idPost);
-	require 'Vue/vueAdmin.php';
+	private $_adminMng;
+
+	public function __construct()
+	{
+		 $this->_adminMng = new Admin();
+	}
+	public function delete($idPost)
+	{
+		$idPost = (int)$_GET['delete'];
+		$postMng->deletePost($idPost);
+		require 'Vue/vueAdmin.php';		
+	}
 }
 
 //VÉRIFICATION DU MOT DE PASSE
@@ -15,7 +22,7 @@ if(isset($_GET['delete']))
 $userPseudo = $_POST['adminId'];
 $userPassword = $_POST['adminPass'];
 
-$adminMng = new Admin();
+
 
 $passReq = $adminMng->idPass($userPseudo);
 $passHash = $passReq->fetch();

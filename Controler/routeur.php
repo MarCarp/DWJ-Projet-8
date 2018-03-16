@@ -1,13 +1,15 @@
 <?php
 require_once 'Controler/Controler.php';
+require_once 'Controler/Admin.php';
 
 class Routeur
 {
-	private $_controler;
+	private $_controler, $_admin;
 
 	public function __construct()
 	{
-		$this->_controler= new Controler();
+		$this->_controler = new Controler();
+		$this->_admin = new Admin();
 	}
 
 	public function RouteRequest()
@@ -20,8 +22,8 @@ class Routeur
 
 				switch($action)
 				{
-					case 'admin':
-						$this->_controler->admin();
+					case 'login':
+						$this->_admin->login();
 						break;
 					case 'about':
 						$this->_controler->about();
@@ -33,13 +35,13 @@ class Routeur
 						$this->_controler->post();
 						break;
 					case 'send':
-						$this->_controler->sendContact();
+						$this->_controler->send();
 						break;
 					case 'addComment':
-						$this->_controler->sendComment();
+						$this->_controler->addComment();
 						break;
 					default:
-						throw new Exception("Erreur : $action innexistante");						
+						throw new Exception("Variable '$action' innexistante");						
 				}
 			}
 			else

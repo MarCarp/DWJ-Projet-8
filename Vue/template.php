@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -71,7 +72,7 @@
 <!---->
 <div class="footer">
 	 <div class="container">
-	 <p><a href="index.php?action=admin">Section Admin</a></p>
+	 <p><a href="index.php?action=login">Section Admin</a></p>
 	 <?php
 	 if(isset($_SESSION['admin']))
 	 {
