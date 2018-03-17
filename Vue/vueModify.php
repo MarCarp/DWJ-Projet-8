@@ -13,7 +13,7 @@ $this->title = 'testModify';
 			  		 	<input type="file" name="createImage" /><br />
 			  		 	<input type="submit" value="Envoyer le fichier" />
 			  		 	<img src="Content/Images/Default.jpg" alt=""/>
-			  		 	<textarea><?= $post['content']?></textarea>
+			  		 	<textarea class="tinymce"><?= $post['content']?></textarea>
 			  		 </p>
 			  	</form>
 			  </div>

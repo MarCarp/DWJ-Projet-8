@@ -3,14 +3,16 @@ require_once 'Model/Post.php';
 require_once 'Model/Comment.php';
 require_once 'Vue/Vue.php';
 
+use \Projet8\Model;
+
 class Controler
 {
 	private $_postMng, $_comMng;
 
 	public function __construct()
 	{
-		$this->_postMng = new \Projet8\Model\Post();
-		$this->_comMng = new \Projet8\Model\Comment();
+		$this->_postMng = new Model\Post();
+		$this->_comMng = new Model\Comment();
 	}
 	//APPELLE LA VUE PAR DÉFAUT : ACCUEIL
 	public function home($page=0)

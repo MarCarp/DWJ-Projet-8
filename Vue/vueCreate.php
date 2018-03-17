@@ -14,7 +14,7 @@ $this->title = 'testCreate';
 			  		 </p>
 			  		<h2></h2>
 					<img src="Content/Images/Default.jpg" alt=""/>						 					 
-					<textarea></textarea>
+					<textarea class="tinymce"></textarea>
 			  	</form>
 			  </div>
 			</div>

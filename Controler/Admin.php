@@ -79,7 +79,7 @@ class Admin
 		{
 			if($passHash != null)
 			{
-				if(password_verify($userPassword, $passHash[0]))
+				if(password_verify($userPassword, $passHash["ADMIN_PASS"]))
 				{
 					$_SESSION['admin'] = $userPseudo;
 					header('Location: index.php');
