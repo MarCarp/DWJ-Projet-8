@@ -20,6 +20,9 @@ class Routeur
 			{
 				switch($_GET['action'])
 				{
+					case 'modify':
+						$this->_admin->modify();
+						break;
 					case 'create':
 						$this->_admin->create();
 						break;

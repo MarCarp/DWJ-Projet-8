@@ -17,4 +17,9 @@ class Admin extends Model
 		$sql = 'DELETE FROM blg_posts WHERE POST_ID = ?';
 		$this->request($sql, array($postId));
 	}
+	public function updatePost($postTitle, $postContent, $postImg, $postId)
+	{
+		$sql = 'UPDATE blg_posts SET POST_TITLE=?, POST_CONTENT=?, POST_IMG=? WHERE POST_ID=?';
+		$this->request($sql, array($postContent, $postTitle, $postId));
+	}
 }

@@ -41,10 +41,4 @@ class Post extends Model
 		$sql = 'INSERT INTO blg_posts(POST_TITLE, POST_CONTENT, POST_IMG, POST_DATE) VALUES(?, ?, ?, NOW())';
 		$this->request($sql, array($postContent, $postTitle, $postImg));
 	}
-
-	public function updatePost($postTitle, $postContent, $postImg, $postId)
-	{
-		$sql = 'UPDATE blg_posts SET POST_TITLE=?, POST_CONTENT=?, POST_IMG=? WHERE POST_ID=?';
-		$this->request($sql, array($postContent, $postTitle, $postId));
-	}
 }

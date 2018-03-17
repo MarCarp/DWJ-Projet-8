@@ -1,6 +1,7 @@
 <?php
 
 require_once 'Model/Admin.php';
+require_once 'Model/Post.php';
 require_once 'Vue/Vue.php';
 
 class Admin
@@ -10,6 +11,7 @@ class Admin
 	public function __construct()
 	{
 		 $this->_adminMng = new \Projet8\Model\Admin();
+		 $this->_postMng = new \Projet8\Model\Post();
 	}
 	public function login()
 	{
@@ -26,6 +28,21 @@ class Admin
 	{
 		session_unset();
 		header('Location: index.php');
+	}
+	public function modify()
+	{
+		if(isset($_SESSION['admin']))
+		{
+			if(isset($_GET['id']))
+			{
+				$idPost = (int)$_GET['id'];
+				$post = $this->_postMng->getPost($idPost);
+				$vue = new Vue('Modify');
+				$vue->generate(array('post'=>$post));
+			}
+			else{throw new Exception("Identifiant de post introuvable");}
+		}
+		else{throw new Exception("Vous n'avez pas les droits pour cette opération");}
 	}
 	public function create()
 	{
