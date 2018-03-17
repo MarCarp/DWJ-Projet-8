@@ -5,7 +5,7 @@ require_once 'Vue/Vue.php';
 
 class Controler
 {
-	public $_postMng, $_comMng;
+	private $_postMng, $_comMng;
 
 	public function __construct()
 	{

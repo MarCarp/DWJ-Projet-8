@@ -1,6 +1,7 @@
 <?php
 
 require_once 'Model/Admin.php';
+require_once 'Vue/Vue.php';
 
 class Admin
 {
@@ -30,7 +31,8 @@ class Admin
 	{
 		if(isset($_SESSION['admin']))
 		{
-
+			$vue = new Vue('Create');
+			$vue->generate();
 		}		
 		else{throw new Exception("Vous n'avez pas les droits pour cette opération");}
 	}
