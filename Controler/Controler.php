@@ -79,7 +79,7 @@ class Controler
 		$posts = $this->_postMng->countPosts();
 
 		$pages['pActu'] = (1+(int)$page);
-		$pages['pTotal'] = ($posts/5)-1;
+		$pages['pTotal'] = ceil(($posts/5)-1);
 		$pages['pPrec'] = $page-1;
 		$pages['pSuiv'] = $page+1;
 		if($page <= 0)

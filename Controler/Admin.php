@@ -26,6 +26,14 @@ class Admin
 		session_unset();
 		header('Location: index.php');
 	}
+	public function create()
+	{
+		if(isset($_SESSION['admin']))
+		{
+
+		}		
+		else{throw new Exception("Vous n'avez pas les droits pour cette opération");}
+	}
 	public function delete()
 	{
 		if(isset($_SESSION['admin']))
@@ -57,15 +65,9 @@ class Admin
 					$_SESSION['admin'] = $userPseudo;
 					header('Location: index.php');
 				}
-				else
-				{
-					throw new Exception("Mot de passe Invalide");
-				}
+				else{throw new Exception("Mot de passe Invalide");}
 			}
-			else
-			{
-				throw new Exception("Aucun utilisateur à ce nom");
-			}
+			else{throw new Exception("Aucun utilisateur à ce nom");}
 		}
 	}
 }

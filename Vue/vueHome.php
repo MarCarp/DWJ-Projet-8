@@ -11,7 +11,7 @@ extract($pages);
 				 	<?php
 				 	if(isset($_SESSION['admin']))
 				 	{
-				 		echo '<div class="content-grid-info"><div class="post-info"><a href="?action=new"><span></span>CRÉER UN NOUVEAU BILLET (Admin)</a></div></div>';
+				 		echo '<div class="content-grid-info"><div class="post-info"><a href="?action=create"><span></span>CRÉER UN NOUVEAU BILLET (Admin)</a></div></div>';
 				 	}
 				 	?>
 

@@ -18,10 +18,11 @@ class Routeur
 		{
 			if(isset($_GET['action']))
 			{
-				$action = $_GET['action'];
-
-				switch($action)
+				switch($_GET['action'])
 				{
+					case 'create':
+						$this->_admin->create();
+						break;
 					case 'delete':
 						$this->_admin->delete();
 						break;
@@ -50,7 +51,7 @@ class Routeur
 						$this->_controler->addComment();
 						break;
 					default:
-						throw new Exception("Variable '$action' innexistante");						
+						throw new Exception('Variable ' . $_GET['action'] . ' inexistante');						
 				}
 			}
 			else
