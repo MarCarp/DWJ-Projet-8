@@ -62,8 +62,8 @@ class Admin
 			{
 				$title = $_POST['createTitle'];
 				$content = $_POST['createContent'];
-				if(isset($_POST['createImage']))
-					$image = $_POST['createContent'];
+				if($_POST['createImage']!=null)
+					$image = $_POST['createImage'];
 				else
 					$image = 'Default.jpg';
 				$this->_adminMng->createPost($title, $content, $image);

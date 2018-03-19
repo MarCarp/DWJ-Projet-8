@@ -8,14 +8,14 @@ $this->title = 'testCreate';
 	 		<h2>Créer un nouveau Billet</h2>
 	 	</div>
 	 	<div class="contact-details">
-			  	<form action="index.php" method="post" enctype="multipart/form-data">
+			  	<form method="post" action="index.php">
 			  		 <p>
 			  		 	<label for="createTitle">Titre : </label><br />
-			  		 	<input  id="create" type="text" name="createTitle" required><br />
+			  		 	<input  id="create" type="text" name="createTitle" enctype="multipart/form-data"  required /><br />
 			  		 	<label for="createImage">Image d'en tête : </label><br />
 			  		 	<input type="file" name="createImage" /><br />
 			  		 	<label for="createContent">Contenu du billet : </label><br />
-			  		 	<textarea class="tinymce" name="createContent" required></textarea>
+			  		 	<textarea name="createContent" required></textarea>
 			  		 	<input class="create" type="submit" value="CRÉER" formaction="index.php?action=addNew"/>
 			  		 	<input class="create" type="submit" value="APERÇU" formaction="index.php?action=preview"/>
 					</p>

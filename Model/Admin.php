@@ -14,7 +14,7 @@ class Admin extends Model
 	}
 	public function createPost($postTitle, $postContent, $postImg)
 	{
-		$sql = 'INSERT INTO blg_posts(POST_TITLE, POST_CONTENT, POST_IMG, POST_DATE) VALUES(?, ?, ?, NOW())';
+		$sql = 'INSERT INTO blg_posts(POST_TITLE, POST_CONTENT, POST_IMG, POST_DATE) VALUES(?, ?, ?, NOW())';
 		$this->request($sql, array($postTitle, $postContent, $postImg));
 	}
 	public function deletePost($postId)

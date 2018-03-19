@@ -8,7 +8,7 @@ $this->title = 'testModify';
 		  	<h2>Modifier un Billet</h2>
 		  </div>
 		  <div class="contact-details">
-			  	<form action="index.php" method="post" enctype="multipart/form-data">
+			  	<form method="post" action="index.php" enctype="multipart/form-data">
 			  		 <p>
 			  		 	<label>Titre : </label><br />
 			  		 	<input id="create" type="text" name="createTitle" size="80" value="<?= $post['title']?>"required><br />

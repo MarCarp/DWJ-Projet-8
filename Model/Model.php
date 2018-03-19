@@ -23,7 +23,7 @@ abstract class Model
 				if(is_int($param))
 					{$q->bindValue($i,$param, PDO::PARAM_INT);}
 				else
-					{$q->bindValue($i,$param, PDO::PARAM_INT);}
+					{$q->bindValue($i,$param, PDO::PARAM_STR);}
 				$i++;
 			}
 			$q->execute();
