@@ -4,23 +4,23 @@ $this->title = 'testCreate';
 
 <div class="single">
 	 <div class="container">
-		  <div class="col-md-8 single-main">				 
-			  <div class="single-grid">
-			  	<h2>Créer un nouveau Billet</h2>
+	 	<div class="contact-info">
+	 		<h2>Créer un nouveau Billet</h2>
+	 	</div>
+	 	<div class="contact-details">
 			  	<form action="index.php" method="post" enctype="multipart/form-data">
 			  		 <p>
 			  		 	<label>Titre : </label><br />
-			  		 	<input type="text" name="createTitle" size="80" required><br />
-			  		 	Image d'en tête :<br />
+			  		 	<input  id="create" type="text" name="createTitle" required><br />
+			  		 	<label>Image d'en tête : </label><br />
 			  		 	<input type="file" name="createImage" /><br />
+			  		 	<label>Contenu du billet : </label><br />
 			  		 	<textarea class="tinymce" name="createContent" required></textarea>
-			  		 	<input type="submit" value="Créer" formaction="index.php?action=addNew"/>
-			  		 	<input type="submit" value="Aperçu" formaction="index.php?action=preview"/>
+			  		 	<input class="create" type="submit" value="CRÉER" formaction="index.php?action=addNew"/>
+			  		 	<input class="create" type="submit" value="APERÇU" formaction="index.php?action=preview"/>
 					</p>
 			  	</form>
-			  </div>
-			</div>
-		  <div class="clearfix"></div>
-		  </div>
-	  </div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
 </div>

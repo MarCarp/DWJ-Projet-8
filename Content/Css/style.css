@@ -300,7 +300,7 @@ line-height: 1.8em;
 font-weight: 400;
 margin-bottom: 1em;
 }
-.contact-details form input[type="text"], .contact-details textarea {
+.contact-details form input[type="text"], .contact-details form input[type="password"], .contact-details textarea {
 width: 47%;
 margin-right: 4%;
 padding: 12px;
@@ -318,7 +318,7 @@ transition: 0.5s all ease;
 -o-transition: 0.5s all ease;
 -ms-transition: 0.5s all ease;
 }
-.contact-details form input[type="text"]:hover, .contact-details textarea:hover{
+.contact-details form input[type="text"]:hover,  .contact-details form input[type="password"]:hover, .contact-details textarea:hover{
 border: 1px solid #00aeff;
 }
 .contact-details textarea {
@@ -634,7 +634,7 @@ font-size: 0.85em;
 overflow: hidden;
 height: 48px;
 }
-.contact-details form input[type="text"], .contact-details textarea {
+.contact-details form input[type="text"],  .contact-details form input[type="password"], .contact-details textarea {
 width: 100%;
 margin-right: 0;
 padding: 10px;
@@ -856,7 +856,7 @@ font-size: 0.77em;
 height: 51px;
 line-height: 1.5em;
 }
-.contact-details form input[type="text"], .contact-details textarea {
+.contact-details form input[type="text"], .contact-details form input[type="password"], .contact-details textarea {
 padding: 6px;
 font-size: 0.8em;
 margin-bottom: 0.6em;
@@ -901,6 +901,15 @@ font-size: 1.1em;
 }
 }
 /*----HORS TEMPLATE---*/
+#login
+{
+  border-radius: 15px;
+  padding-bottom: 25px;
+  margin: 300px auto;
+  width: 35%;
+  text-align: center;
+  border: 1px solid #00aeff;
+}
 #htPagination
 {
   text-align: center;
@@ -920,4 +929,11 @@ font-size: 1.1em;
   text-decoration: none;
   background-color: #22cfff;
 }
-
+#create
+{
+  color: black;
+}
+.create
+{
+  margin-top:20px;
+}

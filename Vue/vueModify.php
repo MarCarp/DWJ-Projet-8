@@ -4,22 +4,25 @@ $this->title = 'testModify';
 
 <div class="single">
 	 <div class="container">
-		  <div class="col-md-8 single-main">				 
-			  <div class="single-grid">
-			  	<h2>Modifier</h2>
+		  <div class="contact-info">
+		  	<h2>Modifier un Billet</h2>
+		  </div>
+		  <div class="contact-details">
 			  	<form action="index.php" method="post" enctype="multipart/form-data">
 			  		 <p>
 			  		 	<label>Titre : </label><br />
-			  		 	<input type="text" name="createTitle" size="80" value="<?= $post['title']?>"required><br />
+			  		 	<input id="create" type="text" name="createTitle" size="80" value="<?= $post['title']?>"required><br />
+			  		 	<label>Image actuelle : </label><br />
+			  		 	<img src="Content/Images/<?=$post['image']?>" alt=""/><br />
+			  		 	<label>Changer l'image : </label><br />
 			  		 	<input type="file" name="createImage" /><br />
-			  		 	<img src="Content/Images/Default.jpg" alt=""/>
+			  		 	<label>Contenu du billet : </label><br />
 			  		 	<textarea class="tinymce"><?= $post['content']?></textarea>
-			  		 	<input type="submit" value="Envoyer le fichier" />
+			  		 	<input class="create" type="submit" value="Envoyer le fichier" />
 			  		 </p>
 			  	</form>
 			  </div>
 			</div>
 		  <div class="clearfix"></div>
-		  </div>
-	  </div>
+		</div>
 </div>
