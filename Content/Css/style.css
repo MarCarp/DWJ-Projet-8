@@ -129,6 +129,15 @@ width: 15px;
 display: inline-block;
 margin-right: 7px;
 }
+.post-info a span.delete{
+background: url(../images/delete.png) no-repeat 0px 3px;
+}
+.post-info a span.modify{
+background: url(../images/modify.png) no-repeat 0px 3px;
+}
+.post-info a span.create{
+background: url(../images/create.png) no-repeat 0px 3px;
+}
 .post-info a {
 color: #626465;
 font-weight: 400;
@@ -936,4 +945,8 @@ font-size: 1.1em;
 .create
 {
   margin-top:20px;
+}
+#newPost
+{
+  text-align: center;
 }

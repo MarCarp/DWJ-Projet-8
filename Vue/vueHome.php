@@ -11,11 +11,15 @@ extract($pages);
 				 	<?php
 				 	if(isset($_SESSION['admin']))
 				 	{
-				 		echo '<div class="content-grid-info"><div class="post-info"><a href="?action=create"><span></span>CRÉER UN NOUVEAU BILLET (Admin)</a></div></div>';
-				 	}
 				 	?>
-
-				 	<?php foreach($posts AS $post): ?>
+				 		<div class="content-grid-info">
+				 			<div class="post-info" id="newPost">
+				 				<a href="?action=create"><span class="create"></span>NOUVEAU BILLET (Admin)</a>
+				 			</div>
+				 		</div>
+				 	<?php
+				 	}
+				 	foreach($posts AS $post): ?>
 					 <div class="content-grid-info">
 						 <img src="Content/Images/<?= $post['image']?> " alt=""/>
 						 <div class="post-info">
@@ -24,8 +28,8 @@ extract($pages);
 						 <a href="?action=post&id=<?=$post['id']?>"><span></span>VOIR PLUS</a><br />
 						 <?php
 						 if(isset($_SESSION['admin'])){
-						 echo '<a href="?action=delete&id=' . $post['id'] . '"><span></span>SUPPRIMER (Admin)</a><br />';
-						 echo '<a href="?action=modify&id=' . $post['id'] . '"><span></span>MODIFIER (Admin)</a>';
+						 	echo '<a href="?action=modify&id=' . $post['id'] . '"><span class="modify"></span>MODIFIER (Admin)</a><br />';
+						 	echo '<a href="?action=delete&id=' . $post['id'] . '"><span class="delete"></span>SUPPRIMER (Admin)</a>';
 						}?>
 						 </div>
 					 </div>
