@@ -12,6 +12,11 @@ class Admin extends Model
 		$q = $this->request($sql,array($id));
 		return $q;
 	}
+	public function createPost($postTitle, $postContent, $postImg)
+	{
+		$sql = 'INSERT INTO blg_posts(POST_TITLE, POST_CONTENT, POST_IMG, POST_DATE) VALUES(?, ?, ?, NOW())';
+		$this->request($sql, array($postTitle, $postContent, $postImg));
+	}
 	public function deletePost($postId)
 	{
 		$sql = 'DELETE FROM blg_posts WHERE POST_ID = ?';

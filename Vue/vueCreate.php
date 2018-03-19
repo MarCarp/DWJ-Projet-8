@@ -6,15 +6,17 @@ $this->title = 'testCreate';
 	 <div class="container">
 		  <div class="col-md-8 single-main">				 
 			  <div class="single-grid">
-			  	<form action="index.php?" method="post" enctype="multipart/form-data">
+			  	<h2>Créer un nouveau Billet</h2>
+			  	<form action="index.php" method="post" enctype="multipart/form-data">
 			  		 <p>
-			  		 	Formulaire d'envoi de fichier :<br />
+			  		 	<label>Titre : </label><br />
+			  		 	<input type="text" name="createTitle" size="80" required><br />
+			  		 	Image d'en tête :<br />
 			  		 	<input type="file" name="createImage" /><br />
-			  		 	<input type="submit" value="Envoyer le fichier" />
-			  		 </p>
-			  		<h2></h2>
-					<img src="Content/Images/Default.jpg" alt=""/>						 					 
-					<textarea class="tinymce"></textarea>
+			  		 	<textarea class="tinymce" name="createContent" required></textarea>
+			  		 	<input type="submit" value="Créer" formaction="index.php?action=addNew"/>
+			  		 	<input type="submit" value="Aperçu" formaction="index.php?action=preview"/>
+					</p>
 			  	</form>
 			  </div>
 			</div>

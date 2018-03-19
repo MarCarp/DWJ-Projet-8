@@ -48,8 +48,27 @@ class Admin
 	{
 		if(isset($_SESSION['admin']))
 		{
+			
 			$vue = new Vue('Create');
 			$vue->generate();
+		}		
+		else{throw new Exception("Vous n'avez pas les droits pour cette opération");}
+	}
+	public function addNew()
+	{
+		if(isset($_SESSION['admin']))
+		{
+			if(isset($_POST['createContent']) && isset($_POST['createTitle']))
+			{
+				$title = $_POST['createTitle'];
+				$content = $_POST['createContent'];
+				if(isset($_POST['createImage']))
+					$image = $_POST['createContent'];
+				else
+					$image = 'Default.jpg';
+				$this->_adminMng->createPost($title, $content, $image);
+				header('Location: index.php');
+			}
 		}		
 		else{throw new Exception("Vous n'avez pas les droits pour cette opération");}
 	}
@@ -61,7 +80,7 @@ class Admin
 			{
 				$idPost = (int)$_GET['id'];
 				$this->_adminMng->deletePost($idPost);
-				header('Location: index.php');
+				header('Location: index.php?page=0');
 			}
 			else{throw new Exception("Identifiant de post introuvable");}
 		}

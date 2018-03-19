@@ -30,12 +30,12 @@ extract($pages);
 						 </div>
 					 </div>
 					 <?php endforeach; ?>
-					 <div id="pagination">
-					 	<a class="pagination" href="?page=0"> << </a>
-					 	<a class="pagination" href="?page=<?= $pPrec ?>"> < </a>
+					 <div id="htPagination">
+					 	<a href="?page=0"> << </a>
+					 	<a href="?page=<?= $pPrec ?>"> < </a>
 					 	<span>Page <?= $pActu . ' / ' . ($pTotal+1) ?></span>
-					 	<a class="pagination" href="?page=<?= $pSuiv ?>"> > </a>
-					 	<a class="pagination" href="?page=<?= $pTotal ?>"> >> </a>
+					 	<a href="?page=<?= $pSuiv ?>"> > </a>
+					 	<a href="?page=<?= $pTotal ?>"> >> </a>
 					 </div>
 				 </div>
 			  </div>

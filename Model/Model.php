@@ -2,6 +2,8 @@
 
 namespace Projet8\Model;
 
+use PDO;
+
 abstract class Model
 {
 	private $_db;
@@ -19,9 +21,9 @@ abstract class Model
 			foreach($params as $param)
 			{
 				if(is_int($param))
-					{$q->bindValue($i,$param, \PDO::PARAM_INT);}
+					{$q->bindValue($i,$param, PDO::PARAM_INT);}
 				else
-					{$q->bindValue($i,$param, \PDO::PARAM_INT);}
+					{$q->bindValue($i,$param, PDO::PARAM_INT);}
 				$i++;
 			}
 			$q->execute();
@@ -33,8 +35,8 @@ abstract class Model
 	{
 		if($this->_db == null)
 		{
-			$this->_db = new \PDO('mysql:host=localhost;dbname=projet_8;charset=utf8','root','');
-			$this->_db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION );
+			$this->_db = new PDO('mysql:host=localhost;dbname=projet_8;charset=utf8','root','');
+			$this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
 		}
 		return $this->_db;

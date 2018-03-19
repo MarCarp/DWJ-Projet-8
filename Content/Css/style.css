@@ -20,11 +20,6 @@ ul,label{
 	margin:0;
 	padding:0;
 }
-/*----HORS TEMPLATE---*/
-#pagination
-{
-  text-align: center;
-}
 /*----start-container---*/
 .logo{
 float:left;
@@ -905,3 +900,24 @@ height: 135px;
 font-size: 1.1em;
 }
 }
+/*----HORS TEMPLATE---*/
+#htPagination
+{
+  text-align: center;
+  margin-bottom: 15px;
+}
+#htPagination a
+{
+  color: white;
+  margin: 0 2px;
+  padding: 0 6px;
+  font-size: 1em;
+  border-radius: 50%;
+  background-color: #00aeff;
+}
+#htPagination a:hover
+{
+  text-decoration: none;
+  background-color: #22cfff;
+}
+

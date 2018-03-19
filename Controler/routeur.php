@@ -26,6 +26,9 @@ class Routeur
 					case 'create':
 						$this->_admin->create();
 						break;
+					case 'addNew':
+						$this->_admin->addNew();
+						break;
 					case 'delete':
 						$this->_admin->delete();
 						break;
