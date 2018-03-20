@@ -2,14 +2,17 @@
 require_once 'Controler/Controler.php';
 require_once 'Controler/Admin.php';
 
+use \Projet8\Controler\Controler;
+use \Projet8\Controler\Admin;
+
 class Routeur
 {
 	private $_controler, $_admin;
 
 	public function __construct()
 	{
-		$this->_controler = new \Projet8\Controler\Controler();
-		$this->_admin = new \Projet8\Controler\Admin();
+		$this->_controler = new Controler();
+		$this->_admin = new Admin();
 	}
 
 	public function RouteRequest()

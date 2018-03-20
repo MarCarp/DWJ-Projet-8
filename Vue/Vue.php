@@ -1,5 +1,7 @@
 <?php
 
+namespace Projet8\Vue;
+
 class Vue
 {
 	private $_file, $_action, $_title;

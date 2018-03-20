@@ -6,8 +6,9 @@ require_once 'Model/Post.php';
 require_once 'Model/Comment.php';
 require_once 'Vue/Vue.php';
 
-use \Projet8\Model;
-use \Vue;
+use \Projet8\Model\Post;
+use \Projet8\Model\Comment;
+use \Projet8\Vue\Vue;
 
 class Controler
 {
@@ -15,8 +16,8 @@ class Controler
 
 	public function __construct()
 	{
-		$this->_postMng = new Model\Post();
-		$this->_comMng = new Model\Comment();
+		$this->_postMng = new Post();
+		$this->_comMng = new Comment();
 	}
 	//APPELLE LA VUE PAR DÉFAUT : ACCUEIL
 	public function home($page=0)

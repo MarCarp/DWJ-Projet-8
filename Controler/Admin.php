@@ -6,7 +6,9 @@ require_once 'Model/Admin.php';
 require_once 'Model/Post.php';
 require_once 'Vue/Vue.php';
 
-use \Vue;
+
+use \Projet8\Model\Post;
+use \Projet8\Vue\Vue;
 
 class Admin
 {
@@ -15,7 +17,7 @@ class Admin
 	public function __construct()
 	{
 		 $this->_adminMng = new \Projet8\Model\Admin();
-		 $this->_postMng = new \Projet8\Model\Post();
+		 $this->_postMng = new Post();
 	}
 	public function login()
 	{
