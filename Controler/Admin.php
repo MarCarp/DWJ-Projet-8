@@ -1,8 +1,12 @@
 <?php
 
+namespace Projet8\Controler;
+
 require_once 'Model/Admin.php';
 require_once 'Model/Post.php';
 require_once 'Vue/Vue.php';
+
+use \Vue;
 
 class Admin
 {

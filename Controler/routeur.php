@@ -8,8 +8,8 @@ class Routeur
 
 	public function __construct()
 	{
-		$this->_controler = new Controler();
-		$this->_admin = new Admin();
+		$this->_controler = new \Projet8\Controler\Controler();
+		$this->_admin = new \Projet8\Controler\Admin();
 	}
 
 	public function RouteRequest()

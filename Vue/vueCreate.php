@@ -15,7 +15,7 @@ $this->title = 'testCreate';
 			  		 	<label for="createImage">Image d'en tête : </label><br />
 			  		 	<input type="file" name="createImage" /><br />
 			  		 	<label for="createContent">Contenu du billet : </label><br />
-			  		 	<textarea name="createContent" required></textarea>
+			  		 	<textarea class="tinymce" name="createContent"></textarea>
 			  		 	<input class="create" type="submit" value="CRÉER" formaction="index.php?action=addNew"/>
 			  		 	<input class="create" type="submit" value="APERÇU" formaction="index.php?action=preview"/>
 					</p>

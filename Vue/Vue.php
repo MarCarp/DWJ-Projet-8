@@ -1,4 +1,5 @@
 <?php
+
 class Vue
 {
 	private $_file, $_action, $_title;

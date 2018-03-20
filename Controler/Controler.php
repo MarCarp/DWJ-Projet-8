@@ -1,9 +1,13 @@
 <?php
+
+namespace Projet8\Controler;
+
 require_once 'Model/Post.php';
 require_once 'Model/Comment.php';
 require_once 'Vue/Vue.php';
 
 use \Projet8\Model;
+use \Vue;
 
 class Controler
 {
