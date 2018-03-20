@@ -68,8 +68,8 @@ class Admin
 			{
 				$title = $_POST['createTitle'];
 				$content = $_POST['createContent'];
-				if($_POST['createImage']!=null)
-					$image = $_POST['createImage'];
+				if(isset($_FILES['createImage']))
+					$image = $this->checkImg();
 				else
 					$image = 'Default.jpg';
 				$this->_adminMng->createPost($title, $content, $image);
@@ -77,6 +77,27 @@ class Admin
 			}
 		}		
 		else{throw new Exception("Vous n'avez pas les droits pour cette opération");}
+	}
+	private function checkImg()
+	{
+		if($_FILES['createImages']['error']==0)
+		{
+			if($_FILES['createImage']['size']<=3000000)
+			{
+				$fileInfo = pathinfo($_FILES['createImage']['name']);
+				$extension = $fileInfo['extension'];
+				$extension_allowed = array('jpg', 'jpeg', 'gif', 'png');
+				if(in_array($extension,$extension_allowed))
+				{
+					$nameImg = basename($_FILES['createImage']['name']);
+					move_uploaded_file($_FILES['createImage']['tmp_name'], 'Content/Images/' . $nameImg);
+					return $nameImg;
+				}
+				else{throw new Exception("Type de fichier non autorisé (.jpg, .jpeg, .gif et .png uniquement)");}
+			}
+			else{throw new Exception("Fichier trop volumineux (max 3Mo");}
+		}
+		else{throw new Exception("Erreur lors du transfert");}
 	}
 	public function delete()
 	{
