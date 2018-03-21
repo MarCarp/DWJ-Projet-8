@@ -23,6 +23,9 @@ class Routeur
 			{
 				switch($_GET['action'])
 				{
+					case 'preview':
+						$this->_admin->preview();
+						break;
 					case 'modify':
 						$this->_admin->modify();
 						break;

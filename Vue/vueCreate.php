@@ -12,13 +12,13 @@ $this->title = 'testCreate';
 			  		 <p>
 			  		 	<!--SECTION TITRE-->
 			  		 	<label for="createTitle">Titre : </label><br />
-			  		 	<input  id="create" type="text" name="createTitle"  required /><br />
+			  		 	<input  id="create" type="text" name="title"  required /><br />
 			  		 	<!--SECTION IMAGE-->
 			  		 	<label for="createImage">Image d'en tête : </label><br />
-			  		 	<input type="file" name="createImage" /><br />
+			  		 	<input type="file" name="image" /><br />
 			  		 	<!--SECTION CONTENU-->
 			  		 	<label for="createContent">Contenu du billet : </label><br />
-			  		 	<textarea class="tinymce" name="createContent"></textarea>
+			  		 	<textarea class="tinymce" name="content"></textarea>
 			  		 	<!--SECTION SUBMIT-->
 			  		 	<input class="create" type="submit" value="CRÉER" formaction="index.php?action=addNew"/>
 			  		 	<input class="create" type="submit" value="APERÇU" formaction="index.php?action=preview"/>

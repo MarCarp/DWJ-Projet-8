@@ -10,15 +10,17 @@ $this->title = 'testModify';
 		  <div class="contact-details">
 			  	<form method="post" action="index.php" enctype="multipart/form-data">
 			  		 <p>
+			  		 	<input type="hidden" name="id" value="<?=$post['id']?>">
 			  		 	<label>Titre : </label><br />
-			  		 	<input id="create" type="text" name="createTitle" size="80" value="<?= $post['title']?>"required><br />
+			  		 	<input id="create" type="text" name="title" size="80" value="<?= $post['title']?>"required><br />
 			  		 	<label>Image actuelle : </label><br />
 			  		 	<img src="Content/Images/<?=$post['image']?>" alt=""/><br />
 			  		 	<label>Changer l'image : </label><br />
-			  		 	<input type="file" name="createImage" /><br />
+			  		 	<input type="file" name="image" /><br />
 			  		 	<label>Contenu du billet : </label><br />
-			  		 	<textarea class="tinymce"><?= $post['content']?></textarea>
-			  		 	<input class="create" type="submit" value="Envoyer le fichier" />
+			  		 	<textarea class="tinymce" name="content"><?= $post['content']?></textarea>
+			  		 	<input class="create" type="submit" value="VALIDER" formaction="index.php?action=update"/>
+			  		 	<input class="create" type="submit" value="APERÇU" formaction="index.php?action=preview&mode=modify"/>
 			  		 </p>
 			  	</form>
 			  </div>
