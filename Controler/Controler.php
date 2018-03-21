@@ -82,7 +82,6 @@ class Controler
 	}
 	private function pagination($page)
 	{
-		$pages = [];
 		$posts = $this->_postMng->countPosts();
 
 		$pages['pActu'] = (1+(int)$page);

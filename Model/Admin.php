@@ -24,7 +24,7 @@ class Admin extends Model
 	}
 	public function updatePost($postTitle, $postContent, $postImg, $postId)
 	{
-		$sql = 'UPDATE blg_posts SET POST_TITLE=?, POST_CONTENT=?, POST_IMG=? WHERE POST_ID=?';
-		$this->request($sql, array($postContent, $postTitle, $postId));
+		$sql = 'UPDATE blg_posts SET POST_TITLE=?, POST_CONTENT=?, POST_IMG=? WHERE POST_ID=?';
+		$this->request($sql, array($postTitle, $postContent, $postImg, $postId));
 	}
 }

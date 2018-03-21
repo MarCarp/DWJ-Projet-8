@@ -12,7 +12,7 @@ use \Projet8\Vue\Vue;
 
 class Admin
 {
-	private $_adminMng;
+	private $_adminMng, $_postMng;
 
 	public function __construct()
 	{
@@ -45,7 +45,7 @@ class Admin
 			$vue = new Vue('Preview');
 			$vue->generate(array('post'=>$post));
 		}
-		else{throw new Exception("Identifiant de post introuvable");}
+		else{header('Location: login.php');}
 	}
 	public function modify()
 	{
@@ -60,22 +60,25 @@ class Admin
 			}
 			else{throw new Exception("Identifiant de post introuvable");}
 		}
-		else{throw new Exception("Vous n'avez pas les droits pour cette opération");}
+		else{header('Location: login.php');}
 	}
+	//ENREGISTRER LES MODIFICATIONS D'UN BILLET
 	public function update()
 	{
 		if(isset($_SESSION['admin']))
 		{
-			if(isset($_GET['id']))
+			if(isset($_POST['id']))
 			{
-				$idPost = (int)$_GET['id'];
-				$post = $this->_postMng->getPost($idPost);
-				$vue = new Vue('Modify');
-				$vue->generate(array('post'=>$post));
+				$id = $_POST['id'];
+				$title = $_POST['title'];
+				$image = $this->checkImg();
+				$content = $_POST['content'];
+				$this->_adminMng->updatePost($title,$content,$image,$id);
+				header('Location: index.php');
 			}
 			else{throw new Exception("Identifiant de post introuvable");}
 		}
-		else{throw new Exception("Vous n'avez pas les droits pour cette opération");}
+		else{header('Location: login.php');}
 	}		
 	public function create()
 	{
@@ -85,7 +88,7 @@ class Admin
 			$vue = new Vue('Create');
 			$vue->generate();
 		}		
-		else{throw new Exception("Vous n'avez pas les droits pour cette opération");}
+		else{header('Location: login.php');}
 	}
 	public function addNew()
 	{
@@ -100,7 +103,7 @@ class Admin
 				header('Location: index.php');
 			}
 		}		
-		else{throw new Exception("Vous n'avez pas les droits pour cette opération");}
+		else{header('Location: login.php');}
 	}
 	private function checkImg()
 	{
@@ -121,12 +124,21 @@ class Admin
 					}
 					else{throw new Exception("Type de fichier non autorisé (.jpg, .jpeg, .gif et .png uniquement)");}
 				}
-				else{throw new Exception("Fichier trop volumineux (max 3Mo");}
+				else{throw new Exception("Fichier trop volumineux (max 3Mo)");}
 			}
 			else{throw new Exception("Erreur lors du transfert");}
 		}
-		else
+		elseif(isset($_POST['prevImage']))
+		{
+			if($_POST['prevImage']!=null)
+			{
+				return $_POST['prevImage'];
+			}
+		}
+		else 
+		{
 			return 'Default.jpg';
+		}
 	}
 	public function delete()
 	{
@@ -140,7 +152,7 @@ class Admin
 			}
 			else{throw new Exception("Identifiant de post introuvable");}
 		}
-		else{throw new Exception("Vous n'avez pas les droits pour cette opération");}
+		else{header('Location: login.php');}
 	}
 	public function verify()
 	{

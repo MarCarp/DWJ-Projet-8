@@ -11,6 +11,7 @@ $this->title = 'testModify';
 			  	<form method="post" action="index.php" enctype="multipart/form-data">
 			  		 <p>
 			  		 	<input type="hidden" name="id" value="<?=$post['id']?>">
+			  		 	<input type="hidden" name="prevImage" value="<?=$post['image']?>">
 			  		 	<label>Titre : </label><br />
 			  		 	<input id="create" type="text" name="title" size="80" value="<?= $post['title']?>"required><br />
 			  		 	<label>Image actuelle : </label><br />
