@@ -11,7 +11,7 @@
 				 	<h3>DERNIERS COMMENTAIRES</h3>
 				 	<ul>
 				 		<?php foreach($topComs AS $topCom) : ?>
-				 			<li><a href="#"><?= $topCom['author'] ?></a> dans <a href="#"><?= $topCom['title'] ?></a></li>
+				 			<li><a href="?action=post&id=<?= $topCom['id'] . '">' . $topCom['author'] . '</a> dans <a href="?action=post&id=' . $topCom['id'] . '">' . $topCom['title'] ?></a></li>
 				 		<?php endforeach; ?>
 				 		</ul>
 				 	</div>

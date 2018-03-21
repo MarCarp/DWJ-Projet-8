@@ -2,29 +2,31 @@
 
 namespace Projet8\Controler;
 
+require_once 'Controler/Image.php';
 require_once 'Model/Admin.php';
 require_once 'Model/Post.php';
 require_once 'Vue/Vue.php';
 
-
+use \Projet8\Controler\Image;
 use \Projet8\Model\Post;
 use \Projet8\Vue\Vue;
 
 class Admin
 {
-	private $_adminMng, $_postMng;
+	private $_adminMng, $_postMng, $_imageMng;
 
 	public function __construct()
 	{
 		 $this->_adminMng = new \Projet8\Model\Admin();
 		 $this->_postMng = new Post();
+		 $this->_imageMng = new Image();
 	}
 	public function preview()
 	{
 		if(isset($_SESSION['admin']))
 		{
 			$post['title'] = $_POST['title'];
-			$post['image'] = $this->checkImg();
+			$post['image'] = $this->_imageMng->check();
 			$post['content'] = $_POST['content'];
 			$vue = new Vue('Preview');
 			$vue->generate(array('post'=>$post));
@@ -55,7 +57,7 @@ class Admin
 			{
 				$id = $_POST['id'];
 				$title = $_POST['title'];
-				$image = $this->checkImg();
+				$image = $this->_imageMng->check();
 				$content = $_POST['content'];
 				$this->_adminMng->updatePost($title,$content,$image,$id);
 				header('Location: index.php');
@@ -68,7 +70,6 @@ class Admin
 	{
 		if(isset($_SESSION['admin']))
 		{
-			
 			$vue = new Vue('Create');
 			$vue->generate();
 		}		
@@ -78,11 +79,11 @@ class Admin
 	{
 		if(isset($_SESSION['admin']))
 		{
-			if(isset($_POST['createContent']) && isset($_POST['createTitle']))
+			if(isset($_POST['content']) && isset($_POST['title']))
 			{
 				$title = $_POST['title'];
 				$content = $_POST['content'];
-				$image = $this->checkImg();
+				$image = $this->_imageMng->check();
 				$this->_adminMng->createPost($title, $content, $image);
 				header('Location: index.php');
 			}
@@ -103,39 +104,8 @@ class Admin
 		}
 		else{header('Location: login.php');}
 	}
-	private function checkImg()
+	private function alert()
 	{
-		if(isset($_FILES['image']))
-		{
-			if($_FILES['image']['error']==0)
-			{
-				if($_FILES['image']['size']<=3000000)
-				{
-					$fileInfo = pathinfo($_FILES['image']['name']);
-					$extension = $fileInfo['extension'];
-					$extension_allowed = array('jpg', 'jpeg', 'gif', 'png');
-					if(in_array($extension,$extension_allowed))
-					{
-						$nameImg = basename($_FILES['image']['name']);
-						move_uploaded_file($_FILES['image']['tmp_name'], 'Content/Images/' . $nameImg);
-						return $nameImg;
-					}
-					else{throw new Exception("Type de fichier non autorisé (.jpg, .jpeg, .gif et .png uniquement)");}
-				}
-				else{throw new Exception("Fichier trop volumineux (max 3Mo)");}
-			}
-			else{throw new Exception("Erreur lors du transfert");}
-		}
-		elseif(isset($_POST['prevImage']))
-		{
-			if($_POST['prevImage']!=null)
-			{
-				return $_POST['prevImage'];
-			}
-		}
-		else 
-		{
-			return 'Default.jpg';
-		}
+		echo '<script>alert("Okay");</script>';
 	}
 }

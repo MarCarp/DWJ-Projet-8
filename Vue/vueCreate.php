@@ -11,13 +11,13 @@ $this->title = 'testCreate';
 			  	<form method="post" action="index.php" enctype="multipart/form-data">
 			  		 <p>
 			  		 	<!--SECTION TITRE-->
-			  		 	<label for="createTitle">Titre : </label><br />
+			  		 	<label for="title">Titre : </label><br />
 			  		 	<input  id="create" type="text" name="title"  required /><br />
 			  		 	<!--SECTION IMAGE-->
-			  		 	<label for="createImage">Image d'en tête : </label><br />
+			  		 	<label for="image">Image d'en tête : </label><br />
 			  		 	<input type="file" name="image" /><br />
 			  		 	<!--SECTION CONTENU-->
-			  		 	<label for="createContent">Contenu du billet : </label><br />
+			  		 	<label for="content">Contenu du billet : </label><br />
 			  		 	<textarea class="tinymce" name="content"></textarea>
 			  		 	<!--SECTION SUBMIT-->
 			  		 	<input class="create" type="submit" value="CRÉER" formaction="index.php?action=addNew"/>
