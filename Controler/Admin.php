@@ -89,6 +89,20 @@ class Admin
 		}		
 		else{header('Location: login.php');}
 	}
+	public function delete()
+	{
+		if(isset($_SESSION['admin']))
+		{
+			if(isset($_GET['id']))
+			{
+				$idPost = (int)$_GET['id'];
+				$this->_adminMng->deletePost($idPost);
+				header('Location: index.php?page=0');
+			}
+			else{throw new Exception("Identifiant de post introuvable");}
+		}
+		else{header('Location: login.php');}
+	}
 	private function checkImg()
 	{
 		if(isset($_FILES['image']))
@@ -123,19 +137,5 @@ class Admin
 		{
 			return 'Default.jpg';
 		}
-	}
-	public function delete()
-	{
-		if(isset($_SESSION['admin']))
-		{
-			if(isset($_GET['id']))
-			{
-				$idPost = (int)$_GET['id'];
-				$this->_adminMng->deletePost($idPost);
-				header('Location: index.php?page=0');
-			}
-			else{throw new Exception("Identifiant de post introuvable");}
-		}
-		else{header('Location: login.php');}
 	}
 }

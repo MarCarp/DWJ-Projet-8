@@ -34,6 +34,22 @@ class Post extends Model
 	{
 		$sql = 'SELECT POST_ID id, POST_TITLE title, POST_CONTENT content, POST_IMG image, DATE_FORMAT(POST_DATE, "%b %e, %Y") datefr FROM blg_posts WHERE POST_ID=?';
 		$post = $this->request($sql, array($postId));
-		return $post->fetch();		
+		return $post->fetch();	
+	}
+	public function search(array $query)
+	{
+		$values = [];
+		$i = 0;
+		$sql = 'SELECT POST_ID id, POST_TITLE title, POST_CONTENT content, POST_IMG image, DATE_FORMAT(POST_DATE, "%b %e, %Y") datefr FROM blg_posts WHERE';
+		foreach($query AS $term)
+		{
+			if($i>0){$sql.= ' OR';}
+			$sql.= ' POST_TITLE LIKE ? OR POST_CONTENT LIKE ?';
+			$values[] = '%'.$term.'%';
+			$values[] = '%'.$term.'%';
+			$i++;
+		}
+		$posts = $this->request($sql, $values);
+		return $posts;
 	}
 }

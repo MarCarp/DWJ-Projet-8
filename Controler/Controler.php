@@ -80,6 +80,22 @@ class Controler
 		$vue = new Vue("Contact");
 		$vue->generate();
 	}
+	public function search()
+	{
+		if(isset($_POST['query']))
+		{
+			$query = $_POST['query'];
+			$terms = explode(" ", $query);
+			$posts = $this->_postMng->search($terms);
+			$pages = $this->pagination(0);
+			$contentSide = $this->side();
+			$data = array('posts'=>$posts,'pages'=>$pages,'contentSide'=>$contentSide);
+			$vue = new Vue('Home');
+			$vue->generate($data);
+		}
+		else{throw new Exception("Recherche incorrecte");
+		}
+	}
 	private function pagination($page)
 	{
 		$posts = $this->_postMng->countPosts();

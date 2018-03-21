@@ -1,6 +1,7 @@
 <?php
 require_once 'Controler/Controler.php';
 require_once 'Controler/Admin.php';
+require_once 'Controler/Login.php';
 
 use \Projet8\Controler\Controler;
 use \Projet8\Controler\Admin;
@@ -25,6 +26,7 @@ class Routeur
 			{
 				switch($_GET['action'])
 				{
+					//SECTION DE LA CLASSE ADMIN
 					case 'update':
 						$this->_admin->update();
 						break;
@@ -43,6 +45,7 @@ class Routeur
 					case 'delete':
 						$this->_admin->delete();
 						break;
+						//SECTION DE LA CLASSE LOGIN
 					case 'verify':
 						$this->_login->verify();
 						break;
@@ -51,6 +54,10 @@ class Routeur
 						break;
 					case 'deco':
 						$this->_login->deco();
+						break;
+						//SECTION DE LA CLASSE PRINCIPALE
+					case 'search':
+						$this->_controler->search();
 						break;
 					case 'about':
 						$this->_controler->about();
