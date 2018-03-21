@@ -4,15 +4,17 @@ require_once 'Controler/Admin.php';
 
 use \Projet8\Controler\Controler;
 use \Projet8\Controler\Admin;
+use \Projet8\Controler\Login;
 
 class Routeur
 {
-	private $_controler, $_admin;
+	private $_controler, $_admin, $_login;
 
 	public function __construct()
 	{
 		$this->_controler = new Controler();
 		$this->_admin = new Admin();
+		$this->_login = new Login();
 	}
 
 	public function RouteRequest()
@@ -42,13 +44,13 @@ class Routeur
 						$this->_admin->delete();
 						break;
 					case 'verify':
-						$this->_admin->verify();
+						$this->_login->verify();
 						break;
 					case 'login':
-						$this->_admin->login();
+						$this->_login->login();
 						break;
 					case 'deco':
-						$this->_admin->deco();
+						$this->_login->deco();
 						break;
 					case 'about':
 						$this->_controler->about();

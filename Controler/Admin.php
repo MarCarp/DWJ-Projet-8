@@ -19,22 +19,6 @@ class Admin
 		 $this->_adminMng = new \Projet8\Model\Admin();
 		 $this->_postMng = new Post();
 	}
-	public function login()
-	{
-		if(isset($_SESSION['admin']))
-		{
-			header('Location: index.php');
-		}
-		else
-		{
-			header('Location: login.php');
-		}
-	}
-	public function deco()
-	{
-		session_unset();
-		header('Location: index.php');
-	}
 	public function preview()
 	{
 		if(isset($_SESSION['admin']))
@@ -153,27 +137,5 @@ class Admin
 			else{throw new Exception("Identifiant de post introuvable");}
 		}
 		else{header('Location: login.php');}
-	}
-	public function verify()
-	{
-		$userPseudo = $_POST['adminId'];
-		$userPassword = $_POST['adminPass'];
-
-		$passReq = $this->_adminMng->idPass($userPseudo);
-		$passHash = $passReq->fetch();
-
-		if(isset($passHash))
-		{
-			if($passHash != null)
-			{
-				if(password_verify($userPassword, $passHash["ADMIN_PASS"]))
-				{
-					$_SESSION['admin'] = $userPseudo;
-					header('Location: index.php');
-				}
-				else{throw new Exception("Mot de passe Invalide");}
-			}
-			else{throw new Exception("Aucun utilisateur à ce nom");}
-		}
 	}
 }
