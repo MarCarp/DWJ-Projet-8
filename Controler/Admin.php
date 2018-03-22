@@ -60,6 +60,7 @@ class Admin
 				$image = $this->_imageMng->check();
 				$content = $_POST['content'];
 				$this->_adminMng->updatePost($title,$content,$image,$id);
+				$this->message(4);
 				header('Location: index.php');
 			}
 			else{throw new Exception("Identifiant de post introuvable");}
@@ -85,6 +86,7 @@ class Admin
 				$content = $_POST['content'];
 				$image = $this->_imageMng->check();
 				$this->_adminMng->createPost($title, $content, $image);
+				$this->message(1);
 				header('Location: index.php');
 			}
 		}		
@@ -98,14 +100,15 @@ class Admin
 			{
 				$idPost = (int)$_GET['id'];
 				$this->_adminMng->deletePost($idPost);
+				$this->message(2);
 				header('Location: index.php?page=0');
 			}
 			else{throw new Exception("Identifiant de post introuvable");}
 		}
 		else{header('Location: login.php');}
 	}
-	private function alert()
+	private function message($num)
 	{
-		echo '<script>alert("Okay");</script>';
+		$_SESSION['script'] = '<script>sendAlert('. $num . ');</script>';
 	}
 }

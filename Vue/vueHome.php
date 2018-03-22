@@ -8,6 +8,7 @@ extract($pages);
 		 <div class="content-grids">
 			 <div class="col-md-8 content-main">
 				 <div class="content-grid">
+				 	<div id="message"></div>
 				 	<?php
 				 	if(isset($_SESSION['admin']))
 				 	{

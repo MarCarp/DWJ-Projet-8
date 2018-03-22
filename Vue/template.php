@@ -32,6 +32,7 @@
 		</script>
 		<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 		<script>tinymce.init({ selector:'.tinymce' });</script>
+		<script src="Js/message.js"></script>
 		<!---->
 </head>
 <body>
@@ -80,8 +81,14 @@
 	 {
 	 	echo '<p><a href="index.php?action=deco">Deconnexion</a></p>';
 	 }
+	 if(isset($_SESSION['script']))
+	 {
+	 	echo $_SESSION['script'];
+	 	unset($_SESSION['script']);
+	 }
 	 ?>
 	 </div>
 </div>
+
 </body>
 </html>
