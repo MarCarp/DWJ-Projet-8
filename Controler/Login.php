@@ -5,6 +5,7 @@ namespace Projet8\Controler;
 require_once 'Model/Admin.php';
 
 use \Projet8\Model\Admin;
+use Exception;
 
 class Login
 {

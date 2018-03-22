@@ -115,4 +115,9 @@ class Controler
 		
 		return $pages;
 	}
+	public function erreur($msg)
+	{
+		$vue = new Vue('Erreur');
+		$vue->generate(array('content'=>$msg));
+	}
 }

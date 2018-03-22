@@ -961,3 +961,10 @@ font-size: 1.1em;
   background-color: #b1e6ff;
   transition: padding 2s ease;
 }
+#erreur
+{
+  font-size: 2em;
+  color: red;
+  padding: 15px;
+  text-align: center;
+}

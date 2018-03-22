@@ -1,11 +1,11 @@
 <?php
-$this->title = 'testCreate';
+$this->title = 'Create';
 ?>
 
 <div class="single">
 	 <div class="container">
 	 	<div class="contact-info">
-	 		<h2>Créer un nouveau Billet</h2>
+	 		<h2>Créer un nouveau billet</h2>
 	 	</div>
 	 	<div class="contact-details">
 			  	<form method="post" action="index.php" enctype="multipart/form-data">

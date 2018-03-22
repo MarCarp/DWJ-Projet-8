@@ -10,6 +10,7 @@ require_once 'Vue/Vue.php';
 use \Projet8\Controler\Image;
 use \Projet8\Model\Post;
 use \Projet8\Vue\Vue;
+use Exception;
 
 class Admin
 {

@@ -1,11 +1,11 @@
 <?php
-$this->title = 'testModify';
+$this->title = 'Modify';
 ?>
 
 <div class="single">
 	 <div class="container">
 		  <div class="contact-info">
-		  	<h2>Modifier un Billet</h2>
+		  	<h2><?= $mode['title'] ?></h2>
 		  </div>
 		  <div class="contact-details">
 			  	<form method="post" action="index.php" enctype="multipart/form-data">

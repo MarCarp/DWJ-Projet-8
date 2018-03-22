@@ -34,10 +34,7 @@ extract($pages);
 						}?>
 						 </div>
 					 </div>
-					 <?php endforeach;
-					 if($_GET['action']!='search')
-					 {
-					 ?>
+					 <?php endforeach;?>
 					 <div id="htPagination">
 					 	<a href="?page=0"> << </a>
 					 	<a href="?page=<?= $pPrec ?>"> < </a>
@@ -45,9 +42,6 @@ extract($pages);
 					 	<a href="?page=<?= $pSuiv ?>"> > </a>
 					 	<a href="?page=<?= $pTotal ?>"> >> </a>
 					 </div>
-					 <?php
-					}
-					?>
 				 </div>
 			  </div>
 			  <?= $contentSide ?>

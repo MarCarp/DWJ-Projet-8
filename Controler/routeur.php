@@ -91,7 +91,7 @@ class Routeur
 		}
 		catch (Exception $e)
 		{
-			die('Erreur : ' . $e->getMessage());
+			$this->_controler->erreur($e->getMessage());
 		}
 	}
 }
