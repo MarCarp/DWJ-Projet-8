@@ -52,9 +52,9 @@
 				 </div>
 				  <span class="menu"> </span> 
 				   <ul>
-						<li class="active"><a href="index.php">ACCUEIL</a></li>						
-						<li><a href="?action=about">À PROPOS</a></li>	
-						<li><a href="?action=contact">CONTACT</a></li>						
+				   		<li <?php if(!isset($_GET['action'])){echo 'class="active"';}?>><a href="index.php">ACCUEIL</a></li>						
+						<li <?php if(isset($_GET['action'])&& $_GET['action']=='about'){echo 'class="active"';}?>><a href="?action=about">À PROPOS</a></li>	
+						<li <?php if(isset($_GET['action'])&& $_GET['action']=='contact'){echo 'class="active"';}?>><a href="?action=contact">CONTACT</a></li>						
 						<div class="clearfix"> </div>
 				 </ul>
 			 </div>
